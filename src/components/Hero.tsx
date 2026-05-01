@@ -36,7 +36,7 @@ export function Hero() {
             <h1 className="display-text text-10xl uppercase">
               <span className="block">Amine</span>
               <span className="relative block">
-                <span className="relative z-10">Larbi.</span>
+                <span className="relative z-10">Larbi</span>
                 <span
                   aria-hidden="true"
                   className="absolute -bottom-2 left-0 right-[35%] -z-10 h-[0.45em] bg-accent"

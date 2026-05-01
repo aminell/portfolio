@@ -26,7 +26,7 @@ export default function CvPage() {
               <h1 className="display-text max-w-4xl text-7xl uppercase sm:text-8xl md:text-9xl">
                 CV
                 <span className="relative ml-3 inline-block">
-                  <span className="relative z-10">Amine Larbi.</span>
+                  <span className="relative z-10">Amine Larbi</span>
                   <span
                     aria-hidden="true"
                     className="absolute -bottom-1 left-0 right-0 -z-10 h-[0.32em] bg-accent"
