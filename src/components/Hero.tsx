@@ -63,11 +63,10 @@ export function Hero() {
             </a>
             <a
               href={hero.ctaSecondary.href}
-              download
               className="brut-border brut-press inline-flex items-center gap-2 bg-paper px-6 py-3 font-bold uppercase shadow-brut"
             >
               {hero.ctaSecondary.label}
-              <span aria-hidden="true">↓</span>
+              <span aria-hidden="true">→</span>
             </a>
           </Reveal>
         </div>

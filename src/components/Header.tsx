@@ -1,13 +1,18 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { content } from "@/lib/content";
 import { ThemeToggle } from "./ThemeToggle";
 
 export function Header() {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const [active, setActive] = useState<string>(content.nav[0]?.id ?? "");
+  const [active, setActive] = useState<string>(isHome ? content.nav[0]?.id ?? "" : "");
+  const homeHref = isHome ? "#accueil" : "/#accueil";
+  const getSectionHref = (id: string) => (isHome ? `#${id}` : `/#${id}`);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -18,6 +23,11 @@ export function Header() {
 
   // Active link : lit la section au centre de la viewport.
   useEffect(() => {
+    if (!isHome) {
+      setActive("");
+      return;
+    }
+
     const sections = content.nav
       .map((n) => document.getElementById(n.id))
       .filter((el): el is HTMLElement => el !== null);
@@ -35,7 +45,7 @@ export function Header() {
 
     sections.forEach((s) => observer.observe(s));
     return () => observer.disconnect();
-  }, []);
+  }, [isHome]);
 
   // Verrouille le scroll quand le menu mobile est ouvert.
   useEffect(() => {
@@ -51,7 +61,7 @@ export function Header() {
       className="fixed inset-x-0 top-0 z-40 border-b-2 border-ink bg-paper/85 backdrop-blur-md transition-[padding] duration-200 data-[scrolled=true]:py-2"
     >
       <div className="mx-auto flex w-full max-w-[1400px] items-center justify-between gap-4 px-5 py-4 sm:px-8">
-        <a href="#accueil" className="flex items-center gap-3 font-bold" aria-label="Aller à l'accueil">
+        <a href={homeHref} className="flex items-center gap-3 font-bold" aria-label="Aller à l'accueil">
           <span className="brut-border grid h-10 w-10 place-items-center bg-accent font-bold text-accent-ink">
             AL
           </span>
@@ -65,7 +75,7 @@ export function Header() {
               return (
                 <li key={item.id}>
                   <a
-                    href={`#${item.id}`}
+                    href={getSectionHref(item.id)}
                     aria-current={isActive ? "true" : undefined}
                     className={`group relative flex items-center gap-2 px-3 py-2 text-sm font-semibold transition-colors ${
                       isActive ? "text-ink" : "text-ink-soft hover:text-ink"
@@ -125,7 +135,7 @@ export function Header() {
           {content.nav.map((item) => (
             <li key={item.id} className="border-b border-ink-line last:border-0">
               <a
-                href={`#${item.id}`}
+                href={getSectionHref(item.id)}
                 onClick={() => setOpen(false)}
                 className="flex items-center justify-between px-5 py-4 font-semibold"
               >

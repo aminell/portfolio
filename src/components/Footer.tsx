@@ -1,6 +1,10 @@
 import { content } from "@/lib/content";
 
-export function Footer() {
+type FooterProps = {
+  topHref?: string;
+};
+
+export function Footer({ topHref = "#accueil" }: FooterProps) {
   const year = new Date().getFullYear();
 
   return (
@@ -21,7 +25,7 @@ export function Footer() {
         <p className="mono text-xs uppercase tracking-widest text-paper/70">{content.footer.tagline}</p>
 
         <a
-          href="#accueil"
+          href={topHref}
           className="brut-border-thick brut-press inline-flex items-center gap-2 bg-paper px-4 py-2 text-sm font-bold uppercase text-ink"
         >
           Retour en haut <span aria-hidden="true">↑</span>

@@ -23,7 +23,7 @@
     "headline": "Étudiant développeur en quête d'alternance.",
     "intro": "19 ans, basé en Île-de-France. Bac STI2D SIN, prochaine étape : BTS SIO option SLAM. Je code, je casse, je recommence — et je cherche une équipe qui m'accueille pour passer à la pratique.",
     "ctaPrimary": { "label": "Me contacter", "href": "#contact" },
-    "ctaSecondary": { "label": "Télécharger le CV", "href": "/cv.pdf" },
+    "ctaSecondary": { "label": "Voir le CV", "href": "/cv" },
     "tickerWords": [
       "Brut · Honnête · Curieux",
       "BTS SIO SLAM 2026",
