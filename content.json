@@ -1,0 +1,128 @@
+{
+  "site": {
+    "name": "Amine Larbi",
+    "title": "Amine Larbi · Étudiant développeur — Portfolio",
+    "description": "Portfolio brutaliste d'Amine Larbi, étudiant BTS SIO SLAM en quête d'alternance en développement.",
+    "url": "https://aminelarbi.com",
+    "locale": "fr_FR"
+  },
+
+  "nav": [
+    { "id": "accueil", "label": "Accueil", "index": "01" },
+    { "id": "a-propos", "label": "À propos", "index": "02" },
+    { "id": "competences", "label": "Compétences", "index": "03" },
+    { "id": "projets", "label": "Projets", "index": "04" },
+    { "id": "parcours", "label": "Parcours", "index": "05" },
+    { "id": "contact", "label": "Contact", "index": "06" }
+  ],
+
+  "hero": {
+    "available": true,
+    "availableLabel": "Disponible pour une alternance — rentrée 2026",
+    "name": "Amine Larbi",
+    "headline": "Étudiant développeur en quête d'alternance.",
+    "intro": "19 ans, basé en Île-de-France. Bac STI2D SIN, prochaine étape : BTS SIO option SLAM. Je code, je casse, je recommence — et je cherche une équipe qui m'accueille pour passer à la pratique.",
+    "ctaPrimary": { "label": "Me contacter", "href": "#contact" },
+    "ctaSecondary": { "label": "Télécharger le CV", "href": "/cv.pdf" },
+    "tickerWords": [
+      "Brut · Honnête · Curieux",
+      "BTS SIO SLAM 2026",
+      "Île-de-France",
+      "Apprend en construisant",
+      "Cherche une alternance"
+    ]
+  },
+
+  "about": {
+    "kicker": "À propos",
+    "title": "Étudiant, autodidacte, opérationnel.",
+    "paragraphs": [
+      "Je suis étudiant en BTS SIO option SLAM, orienté développement. Mon truc : apprendre en construisant et en cassant — un projet personnel, un tuto trop ambitieux, un bug qui tient une nuit entière. C'est comme ça que je progresse.",
+      "Je cherche aujourd'hui une alternance pour passer à la pratique en entreprise, comprendre comment on travaille en équipe, et continuer à monter en compétences sur des stacks utilisées au quotidien."
+    ],
+    "softSkills": [
+      { "label": "Autodidacte", "description": "J'apprends seul ce qui m'intéresse, sans attendre qu'on me le demande." },
+      { "label": "Curieux techniquement", "description": "Veille régulière, tests d'outils, envie de comprendre comment ça marche sous le capot." }
+    ],
+    "interests": ["Gaming", "Veille tech"]
+  },
+
+  "skills": {
+    "kicker": "Compétences",
+    "title": "Ce que je sais faire — et ce que j'apprends.",
+    "categories": ["Langages", "Front-end", "Back-end", "Outils", "Méthodes"],
+    "items": [
+      {
+        "name": "Python",
+        "level": "Apprentissage",
+        "category": "Langages",
+        "note": "Formation CS50P de Harvard, en cours."
+      }
+    ]
+  },
+
+  "projects": {
+    "kicker": "Projets",
+    "title": "Projets à venir.",
+    "emptyState": {
+      "title": "Section en construction",
+      "message": "Les premiers projets arriveront ici très vite. Reviens y jeter un œil — ou contacte-moi directement pour discuter de ce sur quoi je travaille.",
+      "ctaLabel": "Discuter d'un projet",
+      "ctaHref": "#contact"
+    },
+    "items": []
+  },
+
+  "timeline": {
+    "kicker": "Parcours",
+    "title": "D'où je viens, où je vais.",
+    "items": [
+      {
+        "year": "2025",
+        "title": "Bac STI2D — option SIN",
+        "description": "Sciences et Technologies de l'Industrie et du Développement Durable, spécialité Systèmes d'Information et Numérique. Première vraie immersion dans le numérique.",
+        "status": "done"
+      },
+      {
+        "year": "2026",
+        "title": "BTS SIO — option SLAM",
+        "description": "Solutions Logicielles et Applications Métiers. Rentrée septembre 2026. Établissement à confirmer (Parcoursup en cours).",
+        "status": "upcoming"
+      },
+      {
+        "year": "2028",
+        "title": "Licence Pro — développement (alternance)",
+        "description": "Objectif : poursuivre en LP dev en alternance pour passer à plein temps en entreprise tout en gardant un cadre formation.",
+        "status": "goal"
+      }
+    ]
+  },
+
+  "contact": {
+    "kicker": "Contact",
+    "title": "On discute ?",
+    "intro": "Une opportunité d'alternance, une question, un projet à brainstormer ? Le plus simple reste l'email.",
+    "channels": [
+      {
+        "label": "Email",
+        "value": "contact@aminelarbi.com",
+        "href": "mailto:contact@aminelarbi.com",
+        "primary": true
+      },
+      {
+        "label": "GitHub",
+        "value": "github.com/aminell",
+        "href": "https://github.com/aminell"
+      },
+      {
+        "label": "LinkedIn",
+        "value": "Amine Larbi",
+        "href": "https://www.linkedin.com/in/amine-larbi-7a6b80328"
+      }
+    ]
+  },
+
+  "footer": {
+    "tagline": "Site fait main · Next.js + Tailwind · Hébergé sur Vercel"
+  }
+}
