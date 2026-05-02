@@ -7,6 +7,7 @@ import { SectionHeading } from "./SectionHeading";
 // Tu peux changer les valeurs en éditant content.json (le label "level" est libre).
 const LEVEL_STEPS: Record<string, number> = {
   Apprentissage: 1,
+  Bases: 2,
   "À l'aise": 3,
   Confirmé: 4,
   Avancé: 5

@@ -75,7 +75,7 @@ function EmptyState() {
         />
         <div className="relative">
           <p className="mono text-xs uppercase tracking-[0.3em] text-ink-soft">[ work in progress ]</p>
-          <h3 className="display-text mt-4 text-5xl uppercase sm:text-7xl">{emptyState.title}</h3>
+          <h3 className="display-text mt-4 break-words text-3xl uppercase sm:text-5xl md:text-7xl">{emptyState.title}</h3>
           <p className="mt-6 max-w-2xl text-lg text-ink-soft">{emptyState.message}</p>
           <a
             href={emptyState.ctaHref}

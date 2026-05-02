@@ -54,7 +54,7 @@
     "items": [
       {
         "name": "Python",
-        "level": "Apprentissage",
+        "level": "Bases",
         "category": "Langages",
         "note": "Formation CS50P de Harvard, en cours."
       }
