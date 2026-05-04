@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Reveal } from "@/components/Reveal";
+import { Magnetic } from "@/components/Magnetic";
+import { CvViewer } from "@/components/CvViewer";
 import { content } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -37,65 +39,37 @@ export default function CvPage() {
                 Le CV est consultable directement ici, avec une version PDF disponible au
                 téléchargement.
               </p>
+              <div className="mt-5 flex flex-wrap items-center gap-2 mono text-[10px] uppercase tracking-widest text-ink-soft">
+                <span className="brut-border bg-paper-alt px-2 py-1">
+                  <kbd className="font-bold">D</kbd> télécharger
+                </span>
+                <span className="brut-border bg-paper-alt px-2 py-1">
+                  <kbd className="font-bold">F</kbd> plein écran
+                </span>
+                <span className="brut-border bg-paper-alt px-2 py-1">
+                  <kbd className="font-bold">C</kbd> copier email
+                </span>
+                <span className="brut-border bg-paper-alt px-2 py-1">
+                  <kbd className="font-bold">⌘/Ctrl + K</kbd> palette
+                </span>
+              </div>
             </div>
 
-            <a
-              href="/cv.pdf"
-              download
-              className="brut-border brut-press inline-flex w-fit items-center gap-2 bg-accent px-6 py-3 font-bold uppercase text-accent-ink shadow-brut"
-            >
-              Télécharger le CV
-              <span aria-hidden="true">↓</span>
-            </a>
+            <Magnetic>
+              <a
+                data-magnetic="true"
+                href="/cv.pdf"
+                download
+                className="brut-border brut-press inline-flex w-fit items-center gap-2 bg-accent px-6 py-3 font-bold uppercase text-accent-ink shadow-brut"
+              >
+                Télécharger le CV
+                <span aria-hidden="true">↓</span>
+              </a>
+            </Magnetic>
           </Reveal>
 
-          <Reveal delay={120} className="grid gap-5 lg:grid-cols-[280px_1fr]">
-            <aside className="brut-border-thick bg-paper-alt p-5 shadow-brut-lg lg:sticky lg:top-28 lg:self-start">
-              <div className="bg-accent px-2 py-1 mono text-xs font-bold uppercase tracking-widest text-accent-ink">
-                Aperçu
-              </div>
-              <dl className="mt-5 grid gap-4 text-sm">
-                <div>
-                  <dt className="mono text-xs uppercase tracking-widest text-ink-soft">Profil</dt>
-                  <dd className="mt-1 font-bold">Étudiant développeur</dd>
-                </div>
-                <div>
-                  <dt className="mono text-xs uppercase tracking-widest text-ink-soft">Objectif</dt>
-                  <dd className="mt-1 font-bold">Alternance développement</dd>
-                </div>
-                <div>
-                  <dt className="mono text-xs uppercase tracking-widest text-ink-soft">Rentrée</dt>
-                  <dd className="mt-1 font-bold">2026</dd>
-                </div>
-                <div>
-                  <dt className="mono text-xs uppercase tracking-widest text-ink-soft">Localisation</dt>
-                  <dd className="mt-1 font-bold">Île-de-France</dd>
-                </div>
-              </dl>
-            </aside>
-
-            <section
-              aria-label="CV PDF"
-              className="brut-border-thick bg-paper-alt p-3 shadow-brut-lg sm:p-4"
-            >
-              <object
-                data="/cv.pdf#view=FitH"
-                type="application/pdf"
-                className="h-[72vh] min-h-[560px] w-full bg-paper"
-              >
-                <div className="grid min-h-[420px] place-items-center bg-paper p-8 text-center">
-                  <div>
-                    <p className="text-lg font-bold">Impossible d&apos;afficher le PDF ici.</p>
-                    <a
-                      href="/cv.pdf"
-                      className="mt-5 inline-flex font-bold uppercase underline decoration-accent decoration-4 underline-offset-4"
-                    >
-                      Ouvrir le CV
-                    </a>
-                  </div>
-                </div>
-              </object>
-            </section>
+          <Reveal delay={120}>
+            <CvViewer />
           </Reveal>
         </section>
       </main>

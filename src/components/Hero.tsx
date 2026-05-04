@@ -1,6 +1,8 @@
 import { content } from "@/lib/content";
 import { Reveal } from "./Reveal";
 import { Marquee } from "./Marquee";
+import { Magnetic } from "./Magnetic";
+import { LiveClock } from "./LiveClock";
 
 export function Hero() {
   const { hero } = content;
@@ -53,21 +55,27 @@ export function Hero() {
             <p className="mt-5 max-w-xl text-base text-ink-soft sm:text-lg">{hero.intro}</p>
           </Reveal>
 
-          <Reveal delay={320} className="mt-10 flex flex-wrap items-center gap-4">
-            <a
-              href={hero.ctaPrimary.href}
-              className="brut-border brut-press inline-flex items-center gap-2 bg-accent px-6 py-3 font-bold uppercase text-accent-ink shadow-brut"
-            >
-              {hero.ctaPrimary.label}
-              <span aria-hidden="true">→</span>
-            </a>
-            <a
-              href={hero.ctaSecondary.href}
-              className="brut-border brut-press inline-flex items-center gap-2 bg-paper px-6 py-3 font-bold uppercase shadow-brut"
-            >
-              {hero.ctaSecondary.label}
-              <span aria-hidden="true">→</span>
-            </a>
+          <Reveal delay={320} className="mt-10 flex flex-wrap items-center gap-6">
+            <Magnetic max={6} radius={60}>
+              <a
+                data-magnetic="true"
+                href={hero.ctaPrimary.href}
+                className="brut-border brut-press inline-flex items-center gap-2 bg-accent px-6 py-3 font-bold uppercase text-accent-ink shadow-brut"
+              >
+                {hero.ctaPrimary.label}
+                <span aria-hidden="true">→</span>
+              </a>
+            </Magnetic>
+            <Magnetic max={6} radius={60}>
+              <a
+                data-magnetic="true"
+                href={hero.ctaSecondary.href}
+                className="brut-border brut-press inline-flex items-center gap-2 bg-paper px-6 py-3 font-bold uppercase shadow-brut"
+              >
+                {hero.ctaSecondary.label}
+                <span aria-hidden="true">→</span>
+              </a>
+            </Magnetic>
           </Reveal>
         </div>
 
@@ -91,8 +99,11 @@ export function Hero() {
               <dt className="mono text-xs uppercase tracking-widest text-ink-soft">Stack</dt>
               <dd className="font-bold">Python, Web</dd>
             </dl>
-            <div className="mt-6 border-t-2 border-ink pt-4 mono text-xs">
-              <span className="text-ink-soft">{'// '}</span>en construction permanente.
+            <div className="mt-6 flex items-center justify-between gap-3 border-t-2 border-ink pt-4 mono text-xs">
+              <span>
+                <span className="text-ink-soft">{'// '}</span>en construction.
+              </span>
+              <LiveClock />
             </div>
           </aside>
         </Reveal>

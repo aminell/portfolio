@@ -1,6 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { CommandPalette } from "@/components/CommandPalette";
+import { ScrollProgress } from "@/components/ScrollProgress";
+import { KonamiCode } from "@/components/KonamiCode";
+import { ConsoleSignature } from "@/components/ConsoleSignature";
 import { content } from "@/lib/content";
 import "./globals.css";
 
@@ -79,7 +83,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body>
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <ScrollProgress />
+          {children}
+          <CommandPalette />
+          <KonamiCode />
+          <ConsoleSignature />
+        </ThemeProvider>
       </body>
     </html>
   );
