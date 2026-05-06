@@ -2,9 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { CommandPalette } from "@/components/CommandPalette";
-import { ScrollProgress } from "@/components/ScrollProgress";
-import { KonamiCode } from "@/components/KonamiCode";
-import { ConsoleSignature } from "@/components/ConsoleSignature";
 import { content } from "@/lib/content";
 import "./globals.css";
 
@@ -39,9 +36,13 @@ export const metadata: Metadata = {
     "Amine Larbi",
     "portfolio",
     "développeur web",
+    "développeur junior",
     "BTS SIO SLAM",
     "alternance",
-    "Île-de-France"
+    "alternance développeur",
+    "Île-de-France",
+    "Next.js",
+    "TypeScript"
   ],
   openGraph: {
     type: "website",
@@ -49,12 +50,14 @@ export const metadata: Metadata = {
     url: content.site.url,
     title: content.site.title,
     description: content.site.description,
-    siteName: content.site.name
+    siteName: content.site.name,
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: content.site.title }]
   },
   twitter: {
     card: "summary_large_image",
     title: content.site.title,
-    description: content.site.description
+    description: content.site.description,
+    images: ["/og-image.png"]
   },
   robots: { index: true, follow: true }
 };
@@ -84,11 +87,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         <ThemeProvider>
-          <ScrollProgress />
           {children}
           <CommandPalette />
-          <KonamiCode />
-          <ConsoleSignature />
         </ThemeProvider>
       </body>
     </html>

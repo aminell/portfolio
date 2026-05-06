@@ -21,30 +21,26 @@ function SkillCard({ skill, idx }: { skill: Skill; idx: number }) {
   const steps = levelToSteps(skill.level);
 
   return (
-    <Reveal delay={idx * 60}>
-      <article className="brut-border brut-press group flex h-full flex-col gap-4 bg-paper-alt p-6 shadow-brut-sm">
-        <div className="flex items-start justify-between gap-3">
+    <Reveal delay={idx * 60} className="border-b-2 border-ink last:border-b-0">
+      <article className="py-5">
+        <div className="grid gap-4 sm:grid-cols-[180px_1fr_120px] sm:items-start">
+          <h3 className="text-lg font-bold uppercase">{skill.name}</h3>
+
           <div>
-            <p className="mono text-xs uppercase tracking-widest text-ink-soft">{skill.category}</p>
-            <h3 className="display-text mt-1 text-3xl">{skill.name}</h3>
+            {skill.note && <p className="text-sm text-ink-soft">{skill.note}</p>}
+            <div className="mt-3 flex max-w-sm gap-1.5" role="img" aria-label={`Niveau ${steps} sur 5`}>
+              {Array.from({ length: 5 }).map((_, i) => (
+                <span
+                  key={i}
+                  className={`h-2 flex-1 border-2 border-ink ${i < steps ? "bg-accent" : "bg-paper"}`}
+                />
+              ))}
+            </div>
           </div>
-          <span className="brut-border whitespace-nowrap bg-accent px-2 py-1 mono text-[10px] font-bold uppercase tracking-widest text-accent-ink">
+
+          <span className="brut-border w-fit bg-paper px-2 py-1 mono text-[10px] font-bold uppercase tracking-widest sm:justify-self-end">
             {skill.level}
           </span>
-        </div>
-
-        {skill.note && <p className="text-sm text-ink-soft">{skill.note}</p>}
-
-        <div className="mt-auto">
-          <p className="mono mb-2 text-[10px] uppercase tracking-widest text-ink-soft">Niveau</p>
-          <div className="flex gap-1.5" role="img" aria-label={`Niveau ${steps} sur 5`}>
-            {Array.from({ length: 5 }).map((_, i) => (
-              <span
-                key={i}
-                className={`h-2.5 flex-1 border-2 border-ink ${i < steps ? "bg-accent" : "bg-paper"}`}
-              />
-            ))}
-          </div>
         </div>
       </article>
     </Reveal>
@@ -85,7 +81,7 @@ export function Skills() {
                 </div>
               </Reveal>
 
-              <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              <div className="brut-border bg-paper px-5">
                 {group.items.map((item, idx) => (
                   <SkillCard key={item.name} skill={item} idx={idx} />
                 ))}

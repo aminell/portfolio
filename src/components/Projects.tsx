@@ -4,30 +4,42 @@ import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
 
 function ProjectCard({ project, idx }: { project: Project; idx: number }) {
+  const demoIsExternal = project.demo?.startsWith("http");
+  const githubIsExternal = project.github?.startsWith("http");
+
   return (
     <Reveal delay={idx * 80}>
-      <article className="brut-border brut-press flex h-full flex-col bg-paper-alt shadow-brut-sm">
-        {/* Visuel décoratif — pas d'image pour rester rapide et stylé. */}
-        <div
-          className="relative h-44 border-b-2 border-ink bg-accent"
-          aria-hidden="true"
-        >
-          <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_48%,var(--ink)_48%,var(--ink)_52%,transparent_52%),linear-gradient(-45deg,transparent_48%,var(--ink)_48%,var(--ink)_52%,transparent_52%)] bg-[length:24px_24px] opacity-30" />
-          <div className="absolute left-4 top-4 brut-border bg-paper px-2 py-1 mono text-[10px] font-bold uppercase tracking-widest">
+      <article className="brut-border flex h-full flex-col bg-paper p-6">
+        <div className="mb-5 flex flex-wrap items-center gap-2">
+          <span className="mono text-[10px] font-bold uppercase tracking-widest text-ink-soft">
             {project.year ?? "Projet"}
-          </div>
+          </span>
+          {project.status && (
+            <span className="brut-border bg-paper-alt px-2 py-1 mono text-[10px] font-bold uppercase tracking-widest">
+              {project.status}
+            </span>
+          )}
         </div>
 
-        <div className="flex flex-1 flex-col gap-4 p-6">
+        <div className="flex flex-1 flex-col gap-4">
           <h3 className="display-text text-2xl">{project.title}</h3>
           <p className="text-ink-soft">{project.description}</p>
+
+          {project.impact && (
+            <div className="border-l-4 border-accent pl-3">
+              <p className="mono text-[10px] font-bold uppercase tracking-widest text-ink-soft">
+                Impact
+              </p>
+              <p className="mt-1 text-sm font-semibold">{project.impact}</p>
+            </div>
+          )}
 
           {project.technologies.length > 0 && (
             <ul className="flex flex-wrap gap-1.5">
               {project.technologies.map((tech) => (
                 <li
                   key={tech}
-                  className="brut-border bg-paper px-2 py-0.5 mono text-[11px] font-bold uppercase tracking-wide"
+                  className="bg-paper-alt px-2 py-1 mono text-[11px] font-bold uppercase tracking-wide"
                 >
                   {tech}
                 </li>
@@ -39,8 +51,8 @@ function ProjectCard({ project, idx }: { project: Project; idx: number }) {
             {project.github && (
               <a
                 href={project.github}
-                target="_blank"
-                rel="noreferrer"
+                target={githubIsExternal ? "_blank" : undefined}
+                rel={githubIsExternal ? "noreferrer" : undefined}
                 className="brut-border inline-flex items-center gap-1.5 bg-paper px-3 py-1.5 text-sm font-bold uppercase hover:bg-accent"
               >
                 Code <span aria-hidden="true">↗</span>
@@ -49,8 +61,8 @@ function ProjectCard({ project, idx }: { project: Project; idx: number }) {
             {project.demo && (
               <a
                 href={project.demo}
-                target="_blank"
-                rel="noreferrer"
+                target={demoIsExternal ? "_blank" : undefined}
+                rel={demoIsExternal ? "noreferrer" : undefined}
                 className="brut-border inline-flex items-center gap-1.5 bg-ink px-3 py-1.5 text-sm font-bold uppercase text-paper hover:bg-accent hover:text-accent-ink"
               >
                 Démo <span aria-hidden="true">↗</span>

@@ -20,31 +20,31 @@
     "available": true,
     "availableLabel": "Disponible pour une alternance — rentrée 2026",
     "name": "Amine Larbi",
-    "headline": "Étudiant développeur en quête d'alternance.",
-    "intro": "19 ans, basé en Île-de-France. Bac STI2D SIN, prochaine étape : BTS SIO option SLAM. Je code, je casse, je recommence — et je cherche une équipe qui m'accueille pour passer à la pratique.",
+    "headline": "Développeur junior orienté produit, en recherche d'alternance.",
+    "intro": "19 ans, basé en Île-de-France. Bac STI2D SIN, prochaine étape : BTS SIO option SLAM. Je construis ce portfolio comme un terrain d'entraînement réel : interface, contenu, accessibilité, performance, polish, puis itération.",
     "ctaPrimary": { "label": "Me contacter", "href": "#contact" },
     "ctaSecondary": { "label": "Voir le CV", "href": "/cv" },
-    "tickerWords": [
-      "Brut · Honnête · Curieux",
-      "BTS SIO SLAM 2026",
-      "Île-de-France",
-      "Apprend en construisant",
-      "Cherche une alternance"
+    "metrics": [
+      { "value": "2026", "label": "Rentrée visée", "detail": "BTS SIO SLAM" },
+      { "value": "48h", "label": "Réponse", "detail": "Email pro" },
+      { "value": "IDF", "label": "Zone", "detail": "Île-de-France / hybride" }
     ]
   },
 
   "about": {
     "kicker": "À propos",
-    "title": "Étudiant, autodidacte, opérationnel.",
+    "title": "Étudiant, autodidacte, déjà dans le concret.",
     "paragraphs": [
-      "Je suis étudiant en BTS SIO option SLAM, orienté développement. Mon truc : apprendre en construisant et en cassant — un projet personnel, un tuto trop ambitieux, un bug qui tient une nuit entière. C'est comme ça que je progresse.",
-      "Je cherche aujourd'hui une alternance pour passer à la pratique en entreprise, comprendre comment on travaille en équipe, et continuer à monter en compétences sur des stacks utilisées au quotidien."
+      "Je vise une alternance en développement parce que je veux apprendre dans un cadre réel : contraintes, équipe, qualité, retours utilisateurs, deadlines et code qui doit tenir debout.",
+      "Ma méthode est simple : je pars d'un besoin, je construis une première version, je casse ce qui ne marche pas, je documente ce que j'ai compris, puis je recommence plus proprement. Ce portfolio suit exactement cette logique."
     ],
     "softSkills": [
-      { "label": "Autodidacte", "description": "J'apprends seul ce qui m'intéresse, sans attendre qu'on me le demande." },
-      { "label": "Curieux techniquement", "description": "Veille régulière, tests d'outils, envie de comprendre comment ça marche sous le capot." }
+      { "label": "Autodidacte", "description": "J'apprends seul ce qui m'intéresse, puis je transforme l'apprentissage en mini-projets." },
+      { "label": "Curieux techniquement", "description": "Je teste les outils, je lis la doc, et j'aime comprendre ce qui se passe sous le capot." },
+      { "label": "Fiable dans l'effort", "description": "Je peux rester sur un bug jusqu'à comprendre la cause au lieu de seulement contourner le problème." },
+      { "label": "Ouvert au feedback", "description": "Je cherche une équipe qui me corrige franchement pour progresser plus vite." }
     ],
-    "interests": ["Gaming", "Veille tech"]
+    "interests": ["Gaming", "Veille tech", "Interfaces web", "Automatisation", "IA comme outil"]
   },
 
   "skills": {
@@ -56,21 +56,113 @@
         "name": "Python",
         "level": "Bases",
         "category": "Langages",
-        "note": "Formation CS50P de Harvard, en cours."
+        "note": "Formation CS50P de Harvard, exercices et logique algorithmique en progression."
+      },
+      {
+        "name": "JavaScript",
+        "level": "Bases",
+        "category": "Langages",
+        "note": "Manipulation du DOM, événements, fonctions et premières interfaces interactives."
+      },
+      {
+        "name": "TypeScript",
+        "level": "Apprentissage",
+        "category": "Langages",
+        "note": "Typage progressif pour rendre les composants plus sûrs et plus lisibles."
+      },
+      {
+        "name": "HTML / CSS",
+        "level": "À l'aise",
+        "category": "Front-end",
+        "note": "Structure sémantique, responsive, états hover/focus, accessibilité de base."
+      },
+      {
+        "name": "React",
+        "level": "Apprentissage",
+        "category": "Front-end",
+        "note": "Hooks, composants, props, états locaux et interactions côté client."
+      },
+      {
+        "name": "Next.js",
+        "level": "Apprentissage",
+        "category": "Front-end",
+        "note": "App Router, metadata, routes, composants serveur/client et build statique."
+      },
+      {
+        "name": "Tailwind CSS",
+        "level": "Bases",
+        "category": "Front-end",
+        "note": "Design system léger, variables CSS, dark mode et composition responsive."
+      },
+      {
+        "name": "Node.js",
+        "level": "Apprentissage",
+        "category": "Back-end",
+        "note": "Écosystème npm, scripts, build tooling et bases serveur à consolider."
+      },
+      {
+        "name": "Git / GitHub",
+        "level": "Bases",
+        "category": "Outils",
+        "note": "Versionner, lire un diff, structurer des commits et publier un projet."
+      },
+      {
+        "name": "Vercel",
+        "level": "Bases",
+        "category": "Outils",
+        "note": "Déploiement de portfolio, configuration de domaine et build en production."
+      },
+      {
+        "name": "Debug",
+        "level": "Apprentissage",
+        "category": "Méthodes",
+        "note": "Isoler une cause, reproduire un bug, tester une hypothèse puis nettoyer."
+      },
+      {
+        "name": "Accessibilité",
+        "level": "Apprentissage",
+        "category": "Méthodes",
+        "note": "Navigation clavier, focus visible, contraste et structure sémantique."
       }
     ]
   },
 
   "projects": {
     "kicker": "Projets",
-    "title": "Projets à venir.",
+    "title": "Projets & preuves concrètes.",
     "emptyState": {
       "title": "Section en construction",
       "message": "Les premiers projets arriveront ici très vite. Reviens y jeter un œil — ou contacte-moi directement pour discuter de ce sur quoi je travaille.",
       "ctaLabel": "Discuter d'un projet",
       "ctaHref": "#contact"
     },
-    "items": []
+    "items": [
+      {
+        "title": "Portfolio v2 — site brutaliste interactif",
+        "description": "Portfolio Next.js construit comme un vrai produit : contenu typé, dark mode, navigation clavier, CV, SEO et composants animés.",
+        "technologies": ["Next.js", "TypeScript", "Tailwind", "React", "SEO"],
+        "demo": "/",
+        "year": "2026",
+        "status": "En ligne",
+        "impact": "Une vitrine qui montre autant la personnalité que la capacité à livrer une interface propre."
+      },
+      {
+        "title": "CS50P — progression Python",
+        "description": "Parcours d'apprentissage Python orienté logique, fonctions, structures de données et résolution de problèmes.",
+        "technologies": ["Python", "CS50P", "Algorithmique"],
+        "year": "2026",
+        "status": "En cours",
+        "impact": "Objectif : consolider les bases avant de les appliquer sur des scripts et mini-outils concrets."
+      },
+      {
+        "title": "Mini-projets front-end",
+        "description": "Suite de petites expériences UI pour pratiquer les états, les animations, la responsivité et les détails d'interaction.",
+        "technologies": ["React", "CSS", "Accessibilité"],
+        "year": "2026",
+        "status": "Prototype",
+        "impact": "Chaque expérience sert à travailler une notion précise plutôt qu'à empiler des effets gratuits."
+      }
+    ]
   },
 
   "timeline": {
@@ -123,6 +215,6 @@
   },
 
   "footer": {
-    "tagline": "Site fait main · Next.js + Tailwind · Hébergé sur Vercel"
+    "tagline": "Site fait main · Next.js + Tailwind"
   }
 }

@@ -81,7 +81,13 @@ export function Header() {
                       isActive ? "text-ink" : "text-ink-soft hover:text-ink"
                     }`}
                   >
-                    <span className="mono text-[10px] text-accent">{item.index}</span>
+                    <span
+                      className={`mono text-[10px] font-bold transition-colors ${
+                        isActive ? "text-ink" : "text-ink-soft group-hover:text-ink"
+                      }`}
+                    >
+                      {item.index}
+                    </span>
                     {item.label}
                     <span
                       aria-hidden="true"
@@ -140,7 +146,7 @@ export function Header() {
                 className="flex items-center justify-between px-5 py-4 font-semibold"
               >
                 <span className="flex items-center gap-3">
-                  <span className="mono text-xs text-accent">{item.index}</span>
+                  <span className="mono text-xs font-bold text-ink-soft">{item.index}</span>
                   {item.label}
                 </span>
                 <span aria-hidden="true">→</span>

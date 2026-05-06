@@ -14,19 +14,9 @@ type CommandAction = {
   run: () => void | Promise<void>;
 };
 
-// Détection plateforme côté client uniquement (évite le mismatch SSR).
-function useIsMac() {
-  const [isMac, setIsMac] = useState(false);
-  useEffect(() => {
-    setIsMac(/Mac|iPod|iPhone|iPad/.test(navigator.platform));
-  }, []);
-  return isMac;
-}
-
 export function CommandPalette() {
   const router = useRouter();
   const pathname = usePathname();
-  const isMac = useIsMac();
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [active, setActive] = useState(0);
@@ -260,19 +250,7 @@ export function CommandPalette() {
   };
 
   if (!open) {
-    // Pas rendu mais on affiche le hint discret en bas à droite.
-    return (
-      <button
-        type="button"
-        onClick={() => setOpen(true)}
-        aria-label="Ouvrir la palette de commandes"
-        className="fixed bottom-5 right-5 z-30 hidden items-center gap-2 brut-border bg-paper-alt px-3 py-2 mono text-[11px] font-bold uppercase tracking-widest text-ink shadow-brut-sm transition-transform hover:-translate-y-0.5 hover:shadow-brut sm:inline-flex"
-      >
-        <kbd className="brut-border bg-paper px-1.5 py-0.5 text-[10px]">{isMac ? "⌘" : "Ctrl"}</kbd>
-        <kbd className="brut-border bg-paper px-1.5 py-0.5 text-[10px]">K</kbd>
-        <span className="text-ink-soft">menu</span>
-      </button>
-    );
+    return null;
   }
 
   return (

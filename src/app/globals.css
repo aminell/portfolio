@@ -39,14 +39,16 @@
   --paper-alt-rgb: 20 20 20;
   --ink-rgb: 245 242 234;
   --ink-soft-rgb: 191 186 176;
+  --accent-rgb: 125 211 252;
+  --accent-ink-rgb: 6 24 35;
 
   --paper: #0A0A0A;
   --paper-alt: #141414;
   --ink: #F5F2EA;
   --ink-soft: #BFBAB0;
   --ink-line: rgba(245, 242, 234, 0.18);
-  --accent: #D4FF00;
-  --accent-ink: #0A0A0A;
+  --accent: #7DD3FC;
+  --accent-ink: #061823;
 }
 
 @layer base {
@@ -124,7 +126,7 @@
   .display-text {
     font-family: var(--font-display);
     font-weight: 700;
-    letter-spacing: -0.035em;
+    letter-spacing: 0;
     line-height: 0.9;
   }
 

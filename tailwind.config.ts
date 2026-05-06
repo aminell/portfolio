@@ -31,8 +31,8 @@ const config: Config = {
         mono: ["var(--font-mono)", "ui-monospace", "monospace"]
       },
       fontSize: {
-        "10xl": ["clamp(4rem, 18vw, 16rem)", { lineHeight: "0.85", letterSpacing: "-0.04em" }],
-        "9xl": ["clamp(3rem, 12vw, 11rem)", { lineHeight: "0.9", letterSpacing: "-0.035em" }]
+        "10xl": ["clamp(4rem, 18vw, 16rem)", { lineHeight: "0.85", letterSpacing: "0" }],
+        "9xl": ["clamp(3rem, 12vw, 11rem)", { lineHeight: "0.9", letterSpacing: "0" }]
       },
       boxShadow: {
         brut: "8px 8px 0 0 var(--ink)",

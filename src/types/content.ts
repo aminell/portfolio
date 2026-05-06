@@ -21,7 +21,13 @@ export type Hero = {
   intro: string;
   ctaPrimary: Cta;
   ctaSecondary: Cta;
-  tickerWords: string[];
+  metrics: Metric[];
+};
+
+export type Metric = {
+  value: string;
+  label: string;
+  detail: string;
 };
 
 export type SoftSkill = {
@@ -60,6 +66,8 @@ export type Project = {
   github?: string;
   demo?: string;
   year?: string;
+  status?: string;
+  impact?: string;
 };
 
 export type Projects = {
