@@ -166,40 +166,20 @@
     animation: signal-scan 4.8s linear infinite;
   }
 
-  .topo-line {
+  .topo-links {
     position: absolute;
+    inset: 0;
     z-index: 1;
-    height: 3px;
-    transform-origin: left center;
-    background: var(--ink);
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
   }
 
-  .topo-line-a {
-    left: 27%;
-    top: 45%;
-    width: 33%;
-    transform: rotate(-19deg);
-  }
-
-  .topo-line-b {
-    left: 34%;
-    top: 52%;
-    width: 32%;
-    transform: rotate(28deg);
-  }
-
-  .topo-line-c {
-    left: 51%;
-    top: 36%;
-    width: 28%;
-    transform: rotate(24deg);
-  }
-
-  .topo-line-d {
-    left: 50%;
-    top: 57%;
-    width: 32%;
-    transform: rotate(-23deg);
+  .topo-links line {
+    stroke: var(--ink);
+    stroke-linecap: square;
+    stroke-width: 3;
+    vector-effect: non-scaling-stroke;
   }
 
   .topo-node {
@@ -217,33 +197,34 @@
     font-weight: 800;
     letter-spacing: 0.12em;
     box-shadow: 4px 4px 0 0 var(--ink);
+    transform: translate(-50%, -50%);
   }
 
   .topo-core {
-    left: 36%;
-    top: 42%;
+    left: 50%;
+    top: 50%;
     background: var(--accent);
     color: var(--accent-ink);
   }
 
   .topo-wan {
-    left: 12%;
-    top: 24%;
+    left: 22%;
+    top: 28%;
   }
 
   .topo-lan {
-    right: 12%;
-    top: 18%;
+    left: 78%;
+    top: 28%;
   }
 
   .topo-sec {
-    left: 16%;
-    bottom: 17%;
+    left: 24%;
+    top: 74%;
   }
 
   .topo-wifi {
-    right: 10%;
-    bottom: 19%;
+    left: 76%;
+    top: 74%;
   }
 }
 

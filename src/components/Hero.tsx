@@ -79,10 +79,12 @@ export function Hero() {
             </div>
 
             <div className="network-topology border-b-2 border-ink bg-paper-alt">
-              <span className="topo-line topo-line-a" />
-              <span className="topo-line topo-line-b" />
-              <span className="topo-line topo-line-c" />
-              <span className="topo-line topo-line-d" />
+              <svg className="topo-links" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+                <line x1="50" y1="50" x2="22" y2="28" />
+                <line x1="50" y1="50" x2="78" y2="28" />
+                <line x1="50" y1="50" x2="24" y2="74" />
+                <line x1="50" y1="50" x2="76" y2="74" />
+              </svg>
               <span className="topo-node topo-core">CORE</span>
               <span className="topo-node topo-wan">WAN</span>
               <span className="topo-node topo-lan">LAN</span>
