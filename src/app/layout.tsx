@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { CommandPalette } from "@/components/CommandPalette";
+import { ConsoleSignature } from "@/components/ConsoleSignature";
 import { content } from "@/lib/content";
 import "./globals.css";
 
@@ -35,11 +36,14 @@ export const metadata: Metadata = {
   keywords: [
     "Amine Larbi",
     "portfolio",
-    "développeur web",
-    "développeur junior",
-    "BTS SIO SLAM",
+    "BUT RT",
+    "réseaux et télécommunications",
+    "réseaux",
+    "télécommunications",
+    "cybersécurité",
+    "technicien réseau junior",
     "alternance",
-    "alternance développeur",
+    "alternance réseaux",
     "Île-de-France",
     "Next.js",
     "TypeScript"
@@ -64,8 +68,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#F5F2EA" },
-    { media: "(prefers-color-scheme: dark)", color: "#0A0A0A" }
+    { media: "(prefers-color-scheme: light)", color: "#F7F9F4" },
+    { media: "(prefers-color-scheme: dark)", color: "#070C0E" }
   ],
   width: "device-width",
   initialScale: 1
@@ -82,13 +86,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link
           rel="icon"
           type="image/svg+xml"
-          href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23D4FF00'/%3E%3Crect x='3' y='3' width='58' height='58' fill='none' stroke='%230A0A0A' stroke-width='4'/%3E%3Ctext x='32' y='44' text-anchor='middle' font-family='Space Grotesk,Arial,sans-serif' font-size='30' font-weight='700' fill='%230A0A0A'%3EAL%3C/text%3E%3C/svg%3E"
+          href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%2300E5A8'/%3E%3Crect x='3' y='3' width='58' height='58' fill='none' stroke='%2307141F' stroke-width='4'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-family='Space Grotesk,Arial,sans-serif' font-size='27' font-weight='700' fill='%2307141F'%3ERT%3C/text%3E%3C/svg%3E"
         />
       </head>
       <body>
         <ThemeProvider>
           {children}
           <CommandPalette />
+          <ConsoleSignature />
         </ThemeProvider>
       </body>
     </html>

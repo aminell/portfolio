@@ -6,7 +6,7 @@ type SectionHeadingProps = {
   title: string;
 };
 
-// En-tête de section brutaliste : numéro, kicker mono, titre display géant.
+// En-tête de section : numéro, kicker mono, titre display géant.
 export function SectionHeading({ index, kicker, title }: SectionHeadingProps) {
   return (
     <Reveal className="mb-12 flex flex-col gap-4 sm:mb-16">

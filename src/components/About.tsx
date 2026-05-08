@@ -24,12 +24,12 @@ export function About() {
             ))}
           </Reveal>
 
-          {/* Soft skills + intérêts en colonne droite */}
+          {/* Posture + intérêts en colonne droite */}
           <div className="space-y-6 md:col-span-5">
             <Reveal delay={120}>
               <div className="brut-border bg-paper-alt p-6 shadow-brut-sm">
                 <h3 className="mono mb-4 text-xs uppercase tracking-[0.25em] text-ink-soft">
-                  Soft skills
+                  Posture terrain
                 </h3>
                 <ul className="space-y-4">
                   {about.softSkills.map((skill) => (
@@ -48,7 +48,7 @@ export function About() {
             <Reveal delay={200}>
               <div className="brut-border bg-paper p-6 shadow-brut-sm">
                 <h3 className="mono mb-4 text-xs uppercase tracking-[0.25em] text-ink-soft">
-                  Centres d&apos;intérêt
+                  Sujets de lab
                 </h3>
                 <ul className="flex flex-wrap gap-2">
                   {about.interests.map((interest) => (

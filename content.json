@@ -1,190 +1,216 @@
 {
   "site": {
     "name": "Amine Larbi",
-    "title": "Amine Larbi · Étudiant développeur — Portfolio",
-    "description": "Portfolio brutaliste d'Amine Larbi, étudiant BTS SIO SLAM en quête d'alternance en développement.",
+    "title": "Amine Larbi · BUT RT — Portfolio réseaux & télécoms",
+    "description": "Portfolio d'Amine Larbi, profil junior orienté BUT Réseaux et Télécommunications : réseau, systèmes, télécoms, cybersécurité et automatisation.",
     "url": "https://aminelarbi.com",
     "locale": "fr_FR"
   },
 
   "nav": [
     { "id": "accueil", "label": "Accueil", "index": "01" },
-    { "id": "a-propos", "label": "À propos", "index": "02" },
+    { "id": "a-propos", "label": "Profil RT", "index": "02" },
     { "id": "competences", "label": "Compétences", "index": "03" },
-    { "id": "projets", "label": "Projets", "index": "04" },
-    { "id": "parcours", "label": "Parcours", "index": "05" },
+    { "id": "projets", "label": "Labs", "index": "04" },
+    { "id": "parcours", "label": "Trajectoire", "index": "05" },
     { "id": "contact", "label": "Contact", "index": "06" }
   ],
 
   "hero": {
     "available": true,
-    "availableLabel": "Disponible pour une alternance — rentrée 2026",
+    "availableLabel": "Recherche alternance BUT RT — rentrée 2026",
     "name": "Amine Larbi",
-    "headline": "Développeur junior orienté produit, en recherche d'alternance.",
-    "intro": "19 ans, basé en Île-de-France. Bac STI2D SIN, prochaine étape : BTS SIO option SLAM. Je construis ce portfolio comme un terrain d'entraînement réel : interface, contenu, accessibilité, performance, polish, puis itération.",
+    "headline": "Profil Réseaux & Télécoms en construction : câbler, configurer, sécuriser, documenter.",
+    "intro": "19 ans, basé en Île-de-France. Je vise un BUT Réseaux & Télécommunications pour apprendre l'infrastructure sérieusement : adressage, routage, commutation, systèmes, télécoms, supervision et cybersécurité appliquée.",
     "ctaPrimary": { "label": "Me contacter", "href": "#contact" },
     "ctaSecondary": { "label": "Voir le CV", "href": "/cv" },
     "metrics": [
-      { "value": "2026", "label": "Rentrée visée", "detail": "BTS SIO SLAM" },
-      { "value": "48h", "label": "Réponse", "detail": "Email pro" },
+      { "value": "BUT RT", "label": "Formation visée", "detail": "Réseaux & Télécoms" },
+      { "value": "24/7", "label": "Mentalité", "detail": "Curiosité + rigueur" },
       { "value": "IDF", "label": "Zone", "detail": "Île-de-France / hybride" }
     ]
   },
 
   "about": {
-    "kicker": "À propos",
-    "title": "Étudiant, autodidacte, déjà dans le concret.",
+    "kicker": "Profil RT",
+    "title": "Je veux comprendre ce qui fait tenir une infra debout.",
     "paragraphs": [
-      "Je vise une alternance en développement parce que je veux apprendre dans un cadre réel : contraintes, équipe, qualité, retours utilisateurs, deadlines et code qui doit tenir debout.",
-      "Ma méthode est simple : je pars d'un besoin, je construis une première version, je casse ce qui ne marche pas, je documente ce que j'ai compris, puis je recommence plus proprement. Ce portfolio suit exactement cette logique."
+      "Le BUT RT m'intéresse parce qu'il relie le concret et le système : une prise, un câble, une adresse IP, une table de routage, un service qui répond, une trace qui explique ce qui bloque.",
+      "Ma façon d'apprendre : monter un lab, tester une configuration, casser volontairement un scénario, lire les logs, prendre des notes propres, puis refaire plus fiable. Je cherche une alternance où je peux progresser au contact d'une vraie équipe réseau."
     ],
     "softSkills": [
-      { "label": "Autodidacte", "description": "J'apprends seul ce qui m'intéresse, puis je transforme l'apprentissage en mini-projets." },
-      { "label": "Curieux techniquement", "description": "Je teste les outils, je lis la doc, et j'aime comprendre ce qui se passe sous le capot." },
-      { "label": "Fiable dans l'effort", "description": "Je peux rester sur un bug jusqu'à comprendre la cause au lieu de seulement contourner le problème." },
-      { "label": "Ouvert au feedback", "description": "Je cherche une équipe qui me corrige franchement pour progresser plus vite." }
+      { "label": "Rigueur de configuration", "description": "Je préfère comprendre chaque paramètre plutôt que copier une commande sans savoir son effet." },
+      { "label": "Esprit diagnostic", "description": "Je remonte les causes étape par étape : couche physique, IP, service, droit, journal, puis correction." },
+      { "label": "Documentation claire", "description": "Je garde des traces lisibles : schémas, commandes utiles, erreurs rencontrées et procédure de retour arrière." },
+      { "label": "Apprentissage terrain", "description": "Je transforme les notions de cours en petits scénarios testables pour retenir par la pratique." }
     ],
-    "interests": ["Gaming", "Veille tech", "Interfaces web", "Automatisation", "IA comme outil"]
+    "interests": ["Routage", "VLAN", "Linux", "Cybersécurité", "Wi-Fi", "Packet Tracer", "Automatisation"]
   },
 
   "skills": {
     "kicker": "Compétences",
-    "title": "Ce que je sais faire — et ce que j'apprends.",
-    "categories": ["Langages", "Front-end", "Back-end", "Outils", "Méthodes"],
+    "title": "Socle technique pour un parcours Réseaux & Télécoms.",
+    "categories": ["Réseaux", "Télécoms", "Systèmes", "Développement", "Méthodes"],
     "items": [
+      {
+        "name": "Modèle OSI / TCP-IP",
+        "level": "Bases",
+        "category": "Réseaux",
+        "note": "Lecture par couches, encapsulation, ports, protocoles courants et logique de dépannage."
+      },
+      {
+        "name": "Adressage IPv4 / IPv6",
+        "level": "Bases",
+        "category": "Réseaux",
+        "note": "Sous-réseaux, CIDR, passerelle, DNS, DHCP et premiers plans d'adressage propres."
+      },
+      {
+        "name": "Commutation / VLAN",
+        "level": "Apprentissage",
+        "category": "Réseaux",
+        "note": "Segmentation, trunks, access ports et routage inter-VLAN en lab."
+      },
+      {
+        "name": "Routage",
+        "level": "Apprentissage",
+        "category": "Réseaux",
+        "note": "Routes statiques, passerelles, lecture de tables et diagnostic avec ping/traceroute."
+      },
+      {
+        "name": "Cisco Packet Tracer",
+        "level": "Bases",
+        "category": "Réseaux",
+        "note": "Maquettes réseau, tests de connectivité, scénarios VLAN/DHCP/DNS et documentation."
+      },
+      {
+        "name": "Wi-Fi / radio",
+        "level": "Notions",
+        "category": "Télécoms",
+        "note": "Canaux, bandes, sécurité, couverture et premières notions de qualité de signal."
+      },
+      {
+        "name": "Fibre / cuivre",
+        "level": "Notions",
+        "category": "Télécoms",
+        "note": "Supports physiques, connectique, débit, latence et contraintes de déploiement."
+      },
+      {
+        "name": "Linux",
+        "level": "Bases",
+        "category": "Systèmes",
+        "note": "Terminal, fichiers, permissions, services, réseau local et commandes de diagnostic."
+      },
+      {
+        "name": "Windows / postes clients",
+        "level": "Bases",
+        "category": "Systèmes",
+        "note": "Configuration IP, profils utilisateurs, outils système et résolution de pannes simples."
+      },
       {
         "name": "Python",
         "level": "Bases",
-        "category": "Langages",
-        "note": "Formation CS50P de Harvard, exercices et logique algorithmique en progression."
+        "category": "Développement",
+        "note": "Scripts, traitement de texte/fichiers, logique algorithmique et automatisation à consolider."
       },
       {
-        "name": "JavaScript",
+        "name": "HTML / CSS / JavaScript",
         "level": "Bases",
-        "category": "Langages",
-        "note": "Manipulation du DOM, événements, fonctions et premières interfaces interactives."
-      },
-      {
-        "name": "TypeScript",
-        "level": "Apprentissage",
-        "category": "Langages",
-        "note": "Typage progressif pour rendre les composants plus sûrs et plus lisibles."
-      },
-      {
-        "name": "HTML / CSS",
-        "level": "À l'aise",
-        "category": "Front-end",
-        "note": "Structure sémantique, responsive, états hover/focus, accessibilité de base."
-      },
-      {
-        "name": "React",
-        "level": "Apprentissage",
-        "category": "Front-end",
-        "note": "Hooks, composants, props, états locaux et interactions côté client."
-      },
-      {
-        "name": "Next.js",
-        "level": "Apprentissage",
-        "category": "Front-end",
-        "note": "App Router, metadata, routes, composants serveur/client et build statique."
-      },
-      {
-        "name": "Tailwind CSS",
-        "level": "Bases",
-        "category": "Front-end",
-        "note": "Design system léger, variables CSS, dark mode et composition responsive."
-      },
-      {
-        "name": "Node.js",
-        "level": "Apprentissage",
-        "category": "Back-end",
-        "note": "Écosystème npm, scripts, build tooling et bases serveur à consolider."
+        "category": "Développement",
+        "note": "Interfaces web propres pour documenter, présenter et rendre un projet consultable."
       },
       {
         "name": "Git / GitHub",
         "level": "Bases",
-        "category": "Outils",
-        "note": "Versionner, lire un diff, structurer des commits et publier un projet."
+        "category": "Méthodes",
+        "note": "Versionner un lab, conserver l'historique, publier une documentation et relire un diff."
       },
       {
-        "name": "Vercel",
-        "level": "Bases",
-        "category": "Outils",
-        "note": "Déploiement de portfolio, configuration de domaine et build en production."
-      },
-      {
-        "name": "Debug",
+        "name": "Cybersécurité",
         "level": "Apprentissage",
         "category": "Méthodes",
-        "note": "Isoler une cause, reproduire un bug, tester une hypothèse puis nettoyer."
+        "note": "Hygiène numérique, principe du moindre privilège, segmentation et veille sur les vulnérabilités."
       },
       {
-        "name": "Accessibilité",
+        "name": "Troubleshooting",
         "level": "Apprentissage",
         "category": "Méthodes",
-        "note": "Navigation clavier, focus visible, contraste et structure sémantique."
+        "note": "Reproduire, isoler, mesurer, corriger, puis expliquer la cause avec des preuves."
       }
     ]
   },
 
   "projects": {
-    "kicker": "Projets",
-    "title": "Projets & preuves concrètes.",
+    "kicker": "Labs",
+    "title": "Des preuves concrètes, version infrastructure.",
     "emptyState": {
-      "title": "Section en construction",
-      "message": "Les premiers projets arriveront ici très vite. Reviens y jeter un œil — ou contacte-moi directement pour discuter de ce sur quoi je travaille.",
-      "ctaLabel": "Discuter d'un projet",
+      "title": "Lab en préparation",
+      "message": "Les premiers scénarios réseau seront publiés ici avec schémas, commandes, erreurs rencontrées et captures de validation.",
+      "ctaLabel": "Parler d'un lab",
       "ctaHref": "#contact"
     },
     "items": [
       {
-        "title": "Portfolio v2 — site brutaliste interactif",
-        "description": "Portfolio Next.js construit comme un vrai produit : contenu typé, dark mode, navigation clavier, CV, SEO et composants animés.",
-        "technologies": ["Next.js", "TypeScript", "Tailwind", "React", "SEO"],
+        "title": "Lab VLAN & routage inter-VLAN",
+        "description": "Maquette Packet Tracer avec plusieurs VLAN, plan d'adressage, trunk, passerelle par réseau et tests de connectivité documentés.",
+        "technologies": ["Packet Tracer", "VLAN", "IPv4", "Routage"],
+        "year": "2026",
+        "status": "En cours",
+        "impact": "Montrer que je sais découper un réseau proprement et vérifier chaque étape au lieu de seulement afficher une topologie."
+      },
+      {
+        "title": "Carnet OSI / TCP-IP",
+        "description": "Fiches courtes pour relier théorie et dépannage : couche concernée, symptômes, commandes utiles et erreurs fréquentes.",
+        "technologies": ["OSI", "TCP-IP", "DNS", "DHCP", "ICMP"],
+        "year": "2026",
+        "status": "Documentation",
+        "impact": "Construire une base claire pour diagnostiquer plus vite et expliquer simplement ce que je fais."
+      },
+      {
+        "title": "Scripts d'automatisation réseau",
+        "description": "Premiers scripts Python pour générer des plans d'adressage, vérifier des plages IP et préparer des inventaires simples.",
+        "technologies": ["Python", "CSV", "IP", "Automatisation"],
+        "year": "2026",
+        "status": "Prototype",
+        "impact": "Utiliser le développement comme accélérateur de tâches réseau répétitives."
+      },
+      {
+        "title": "Portfolio RT — supervision personnelle",
+        "description": "Site Next.js pensé comme une console de profil : contenu typé, mode sombre, navigation clavier et identité visuelle inspirée réseau.",
+        "technologies": ["Next.js", "TypeScript", "Tailwind", "SEO"],
         "demo": "/",
         "year": "2026",
         "status": "En ligne",
-        "impact": "Une vitrine qui montre autant la personnalité que la capacité à livrer une interface propre."
-      },
-      {
-        "title": "CS50P — progression Python",
-        "description": "Parcours d'apprentissage Python orienté logique, fonctions, structures de données et résolution de problèmes.",
-        "technologies": ["Python", "CS50P", "Algorithmique"],
-        "year": "2026",
-        "status": "En cours",
-        "impact": "Objectif : consolider les bases avant de les appliquer sur des scripts et mini-outils concrets."
-      },
-      {
-        "title": "Mini-projets front-end",
-        "description": "Suite de petites expériences UI pour pratiquer les états, les animations, la responsivité et les détails d'interaction.",
-        "technologies": ["React", "CSS", "Accessibilité"],
-        "year": "2026",
-        "status": "Prototype",
-        "impact": "Chaque expérience sert à travailler une notion précise plutôt qu'à empiler des effets gratuits."
+        "impact": "Présenter mon parcours avec un objet concret, maintenable et cohérent avec la direction BUT RT."
       }
     ]
   },
 
   "timeline": {
-    "kicker": "Parcours",
-    "title": "D'où je viens, où je vais.",
+    "kicker": "Trajectoire",
+    "title": "Objectif : passer du lab à l'infra réelle.",
     "items": [
       {
         "year": "2025",
         "title": "Bac STI2D — option SIN",
-        "description": "Sciences et Technologies de l'Industrie et du Développement Durable, spécialité Systèmes d'Information et Numérique. Première vraie immersion dans le numérique.",
+        "description": "Sciences et Technologies de l'Industrie et du Développement Durable, spécialité Systèmes d'Information et Numérique.",
         "status": "done"
       },
       {
         "year": "2026",
-        "title": "BTS SIO — option SLAM",
-        "description": "Solutions Logicielles et Applications Métiers. Rentrée septembre 2026. Établissement à confirmer (Parcoursup en cours).",
+        "title": "BUT Réseaux & Télécommunications",
+        "description": "Rentrée visée : construire un socle solide en réseau, télécoms, systèmes, cybersécurité et services numériques.",
         "status": "upcoming"
       },
       {
-        "year": "2028",
-        "title": "Licence Pro — développement (alternance)",
-        "description": "Objectif : poursuivre en LP dev en alternance pour passer à plein temps en entreprise tout en gardant un cadre formation.",
+        "year": "2026-2027",
+        "title": "Alternance / stage en infrastructure",
+        "description": "Objectif : contribuer à des missions concrètes de support, déploiement, supervision, documentation et automatisation.",
+        "status": "goal"
+      },
+      {
+        "year": "2029",
+        "title": "Technicien réseau / admin junior",
+        "description": "Cap visé : devenir fiable sur l'exploitation réseau, la sécurité de base, les systèmes et la relation terrain.",
         "status": "goal"
       }
     ]
@@ -192,8 +218,8 @@
 
   "contact": {
     "kicker": "Contact",
-    "title": "On discute ?",
-    "intro": "Une opportunité d'alternance, une question, un projet à brainstormer ? Le plus simple reste l'email.",
+    "title": "Une mission RT à me confier ?",
+    "intro": "Alternance, stage, échange école/entreprise ou conseil pour orienter mes labs : je réponds vite et proprement.",
     "channels": [
       {
         "label": "Email",
@@ -215,6 +241,6 @@
   },
 
   "footer": {
-    "tagline": "Site fait main · Next.js + Tailwind"
+    "tagline": "Mode RT · Next.js + Tailwind · contenu piloté par JSON"
   }
 }

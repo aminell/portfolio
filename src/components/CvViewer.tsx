@@ -92,11 +92,11 @@ export function CvViewer() {
         <dl className="grid gap-4 text-sm">
           <div>
             <dt className="mono text-xs uppercase tracking-widest text-ink-soft">Profil</dt>
-            <dd className="mt-1 font-bold">Étudiant développeur</dd>
+            <dd className="mt-1 font-bold">Profil BUT RT</dd>
           </div>
           <div>
             <dt className="mono text-xs uppercase tracking-widest text-ink-soft">Objectif</dt>
-            <dd className="mt-1 font-bold">Alternance développement</dd>
+            <dd className="mt-1 font-bold">Alternance infrastructure</dd>
           </div>
           <div>
             <dt className="mono text-xs uppercase tracking-widest text-ink-soft">Rentrée</dt>

@@ -269,7 +269,7 @@ export function CommandPalette() {
         onKeyDown={onKeyDown}
         className="relative w-full max-w-xl brut-border-thick bg-paper shadow-brut-lg"
       >
-        {/* Barre titre brutaliste */}
+        {/* Barre titre console */}
         <div className="flex items-center justify-between border-b-2 border-ink bg-accent px-4 py-2">
           <p className="mono text-[11px] font-bold uppercase tracking-widest text-accent-ink">
             ⌘ command palette

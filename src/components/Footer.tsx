@@ -12,7 +12,7 @@ export function Footer({ topHref = "#accueil" }: FooterProps) {
       <div className="mx-auto flex w-full max-w-[1400px] flex-col items-start justify-between gap-6 px-5 sm:px-8 md:flex-row md:items-center">
         <div className="flex items-center gap-3">
           <span className="brut-border-thick grid h-10 w-10 place-items-center bg-accent font-bold text-accent-ink">
-            AL
+            RT
           </span>
           <div>
             <p className="display-text text-lg uppercase">{content.site.name}</p>

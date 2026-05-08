@@ -31,7 +31,7 @@ export function Timeline() {
         />
 
         <ol className="relative space-y-8">
-          {/* Ligne verticale brutaliste */}
+          {/* Ligne verticale du parcours */}
           <span
             aria-hidden="true"
             className="absolute left-[18px] top-2 bottom-2 w-[3px] bg-ink md:left-1/2 md:-translate-x-1/2"

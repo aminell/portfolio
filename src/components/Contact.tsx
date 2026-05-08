@@ -17,7 +17,7 @@ export function Contact() {
             <div className="mt-8 brut-border bg-paper-alt p-6 shadow-brut-sm">
               <p className="mono text-xs uppercase tracking-widest text-ink-soft">Réponse</p>
               <p className="mt-2 text-2xl font-bold">Sous 48h ouvrées.</p>
-              <p className="mt-1 text-sm text-ink-soft">Du lundi au vendredi, basé en Île-de-France (UTC+1).</p>
+              <p className="mt-1 text-sm text-ink-soft">Du lundi au vendredi, basé en Île-de-France.</p>
             </div>
           </Reveal>
 

@@ -3,31 +3,25 @@
 @tailwind utilities;
 
 /*
- * Palette brutaliste — accent acid yellow (#D4FF00).
- * Light = papier off-white + encre noire pure.
- * Dark  = noir profond + encre off-white.
- * L'accent reste identique dans les deux modes : c'est ce qui donne
- * l'identité brutaliste et la cohérence du site.
- *
- * Les variables RGB (triplets séparés par des espaces) servent à Tailwind
- * pour les opacity modifiers (ex: bg-paper/85). Les variables hex servent
- * aux usages CSS directs (border, ::selection, etc.).
+ * Palette RT : papier clair, encre bleu-noir, vert signal en light mode
+ * et accent ambre en dark mode. Les variables RGB servent à Tailwind pour
+ * les opacity modifiers (ex: bg-paper/85).
  */
 :root {
-  --paper-rgb: 245 242 234;
-  --paper-alt-rgb: 236 231 217;
-  --ink-rgb: 10 10 10;
-  --ink-soft-rgb: 42 42 42;
-  --accent-rgb: 212 255 0;
-  --accent-ink-rgb: 10 10 10;
+  --paper-rgb: 247 249 244;
+  --paper-alt-rgb: 231 242 239;
+  --ink-rgb: 7 20 31;
+  --ink-soft-rgb: 54 74 88;
+  --accent-rgb: 0 229 168;
+  --accent-ink-rgb: 4 18 13;
 
-  --paper: #F5F2EA;
-  --paper-alt: #ECE7D9;
-  --ink: #0A0A0A;
-  --ink-soft: #2A2A2A;
-  --ink-line: rgba(10, 10, 10, 0.18);
-  --accent: #D4FF00;
-  --accent-ink: #0A0A0A;
+  --paper: #F7F9F4;
+  --paper-alt: #E7F2EF;
+  --ink: #07141F;
+  --ink-soft: #364A58;
+  --ink-line: rgba(7, 20, 31, 0.18);
+  --accent: #00E5A8;
+  --accent-ink: #04120D;
 
   --font-display: "Space Grotesk", system-ui, sans-serif;
   --font-sans: "Inter", system-ui, sans-serif;
@@ -35,20 +29,20 @@
 }
 
 .dark {
-  --paper-rgb: 10 10 10;
-  --paper-alt-rgb: 20 20 20;
-  --ink-rgb: 245 242 234;
-  --ink-soft-rgb: 191 186 176;
-  --accent-rgb: 125 211 252;
-  --accent-ink-rgb: 6 24 35;
+  --paper-rgb: 7 12 14;
+  --paper-alt-rgb: 15 24 27;
+  --ink-rgb: 239 255 248;
+  --ink-soft-rgb: 167 186 181;
+  --accent-rgb: 247 201 72;
+  --accent-ink-rgb: 20 13 1;
 
-  --paper: #0A0A0A;
-  --paper-alt: #141414;
-  --ink: #F5F2EA;
-  --ink-soft: #BFBAB0;
-  --ink-line: rgba(245, 242, 234, 0.18);
-  --accent: #7DD3FC;
-  --accent-ink: #061823;
+  --paper: #070C0E;
+  --paper-alt: #0F181B;
+  --ink: #EFFFF8;
+  --ink-soft: #A7BAB5;
+  --ink-line: rgba(239, 255, 248, 0.18);
+  --accent: #F7C948;
+  --accent-ink: #140D01;
 }
 
 @layer base {
@@ -98,7 +92,7 @@
 }
 
 @layer components {
-  /* Bordure brutaliste : 2px côté ink, sans rayon. */
+  /* Bordure franche : 2px côté ink, sans rayon. */
   .brut-border {
     border: 2px solid var(--ink);
   }
@@ -132,6 +126,124 @@
 
   .mono {
     font-family: var(--font-mono);
+  }
+
+  .circuit-grid {
+    background-image:
+      linear-gradient(var(--ink-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--ink-line) 1px, transparent 1px),
+      linear-gradient(135deg, transparent 0 48%, rgb(var(--accent-rgb) / 0.18) 48% 52%, transparent 52% 100%);
+    background-position: center;
+    background-size: 44px 44px, 44px 44px, 220px 220px;
+    mask-image: linear-gradient(to bottom, black 0%, black 62%, transparent 100%);
+    opacity: 0.55;
+  }
+
+  .network-topology {
+    position: relative;
+    min-height: 290px;
+    overflow: hidden;
+  }
+
+  .network-topology::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--ink-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--ink-line) 1px, transparent 1px);
+    background-size: 28px 28px;
+    opacity: 0.52;
+  }
+
+  .network-topology::after {
+    content: "";
+    position: absolute;
+    inset: -40% 18%;
+    width: 22%;
+    background: linear-gradient(90deg, transparent, rgb(var(--accent-rgb) / 0.55), transparent);
+    transform: rotate(18deg);
+    animation: signal-scan 4.8s linear infinite;
+  }
+
+  .topo-line {
+    position: absolute;
+    z-index: 1;
+    height: 3px;
+    transform-origin: left center;
+    background: var(--ink);
+  }
+
+  .topo-line-a {
+    left: 27%;
+    top: 45%;
+    width: 33%;
+    transform: rotate(-19deg);
+  }
+
+  .topo-line-b {
+    left: 34%;
+    top: 52%;
+    width: 32%;
+    transform: rotate(28deg);
+  }
+
+  .topo-line-c {
+    left: 51%;
+    top: 36%;
+    width: 28%;
+    transform: rotate(24deg);
+  }
+
+  .topo-line-d {
+    left: 50%;
+    top: 57%;
+    width: 32%;
+    transform: rotate(-23deg);
+  }
+
+  .topo-node {
+    position: absolute;
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    min-width: 62px;
+    height: 42px;
+    border: 2px solid var(--ink);
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    box-shadow: 4px 4px 0 0 var(--ink);
+  }
+
+  .topo-core {
+    left: 36%;
+    top: 42%;
+    background: var(--accent);
+    color: var(--accent-ink);
+  }
+
+  .topo-wan {
+    left: 12%;
+    top: 24%;
+  }
+
+  .topo-lan {
+    right: 12%;
+    top: 18%;
+  }
+
+  .topo-sec {
+    left: 16%;
+    bottom: 17%;
+  }
+
+  .topo-wifi {
+    right: 10%;
+    bottom: 19%;
   }
 }
 
@@ -194,6 +306,11 @@
   40% { transform: translate(2px, -1px); }
   60% { transform: translate(-1px, 2px); }
   80% { transform: translate(1px, -2px); }
+}
+
+@keyframes signal-scan {
+  0% { transform: translateX(-220%) rotate(18deg); }
+  100% { transform: translateX(420%) rotate(18deg); }
 }
 .konami-flash body {
   animation: konami-flash 900ms ease-out;

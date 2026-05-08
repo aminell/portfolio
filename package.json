@@ -2,7 +2,7 @@
   "name": "portfolio-amine-larbi",
   "version": "1.0.0",
   "private": true,
-  "description": "Portfolio brutaliste moderne d'Amine Larbi — Next.js + Tailwind, contenu piloté par content.json.",
+  "description": "Portfolio BUT RT d'Amine Larbi — Next.js + Tailwind, contenu piloté par content.json.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

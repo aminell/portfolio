@@ -1,11 +1,11 @@
 # Portfolio — Amine Larbi
 
-Portfolio one-page brutaliste moderne, construit avec **Next.js 14 (App Router)**, **TypeScript** et **Tailwind CSS**. Le contenu (compétences, projets, parcours, contact) est piloté par un seul fichier JSON, pour pouvoir le faire évoluer sans toucher au code.
+Portfolio one-page orienté **BUT Réseaux & Télécommunications**, construit avec **Next.js 14 (App Router)**, **TypeScript** et **Tailwind CSS**. Le contenu (compétences, labs, parcours, contact) est piloté par un seul fichier JSON, pour pouvoir le faire évoluer sans toucher au code.
 
 - **Stack** : Next.js 14 · React 18 · TypeScript · Tailwind 3
 - **Hébergement** : Vercel (déploiement auto via GitHub)
 - **Domaine** : [aminelarbi.com](https://aminelarbi.com)
-- **Direction artistique** : brutaliste moderne — accent **acid yellow `#D4FF00`**
+- **Direction artistique** : console réseau / supervision — accent signal **`#00E5A8`** en light mode
 - **Modes** : light + dark (switch en haut à droite, persistant)
 
 ---
@@ -48,8 +48,8 @@ Le fichier est typé : son schéma est décrit dans [`src/types/content.ts`](./s
 {
   "site":     { /* métadonnées globales (title, description, url) */ },
   "nav":      [ /* liens de navigation : id + label + index */ ],
-  "hero":     { /* hero : nom, accroche, intro, CTAs, mots du marquee */ },
-  "about":    { /* à propos : paragraphes, soft skills, intérêts */ },
+  "hero":     { /* hero : nom, accroche, intro, CTAs, métriques */ },
+  "about":    { /* à propos : paragraphes, posture terrain, sujets de lab */ },
   "skills":   { /* compétences : catégories + items */ },
   "projects": { /* projets : items (peut être vide → empty state s'affiche) */ },
   "timeline": { /* parcours : items avec année / titre / statut */ },
@@ -67,7 +67,7 @@ Le fichier est typé : son schéma est décrit dans [`src/types/content.ts`](./s
 {
   "name": "JavaScript",
   "level": "À l'aise",          // libre, mais "Apprentissage" / "À l'aise" / "Confirmé" / "Avancé" sont mappés à une jauge visuelle
-  "category": "Langages",       // doit correspondre à une entrée de skills.categories
+  "category": "Réseaux",        // doit correspondre à une entrée de skills.categories
   "note": "Pratique régulière sur des projets perso." // optionnel
 }
 ```
@@ -124,10 +124,10 @@ Dépose ton CV à jour dans `public/cv.pdf`. C'est ce fichier que cible le bouto
 
 L'identité visuelle vit dans deux endroits seulement :
 
-- **`src/app/globals.css`** — variables CSS (couleurs `--paper`, `--ink`, `--accent`, etc. + variantes light / dark)
+- **`src/app/globals.css`** — variables CSS (couleurs `--paper`, `--ink`, `--accent`, etc. + variantes light / dark) et motif réseau
 - **`tailwind.config.ts`** — extensions Tailwind (ombres `shadow-brut*`, polices, animations)
 
-Pour changer la couleur d'accent, modifie `--accent` dans `globals.css` (light **et** dark) — elle est volontairement identique dans les deux modes pour garder la cohérence.
+Pour changer la couleur d'accent, modifie `--accent` dans `globals.css` (light **et** dark). Le mode sombre utilise volontairement un accent différent pour garder un contraste franc.
 
 ---
 
@@ -177,7 +177,7 @@ portfolio-v2/
 │   │   ├── globals.css       ← variables design + bases Tailwind
 │   │   ├── layout.tsx        ← shell HTML, fonts, métadonnées
 │   │   ├── page.tsx          ← assemble les sections
-│   │   └── not-found.tsx     ← page 404 brutaliste
+│   │   └── not-found.tsx     ← page 404
 │   ├── components/
 │   │   ├── Header.tsx
 │   │   ├── Hero.tsx
@@ -222,7 +222,7 @@ Choix faits dans le projet :
 ## 7. Roadmap suggérée
 
 - [ ] Déposer ton vrai `cv.pdf` dans `public/`.
-- [ ] Ajouter ton premier projet réel dans `content.json` → `projects.items`.
-- [ ] Compléter l'établissement du BTS dans `content.json` → `timeline.items[1].description` dès confirmation Parcoursup.
+- [ ] Ajouter ton premier lab réel dans `content.json` → `projects.items`.
+- [ ] Compléter l'établissement du BUT RT dans `content.json` → `timeline.items[1].description` dès confirmation.
 - [ ] (Optionnel) Ajouter une vraie image OG dans `public/og-image.png` + référence dans `layout.tsx`.
 - [ ] (Optionnel) Brancher [Vercel Analytics](https://vercel.com/analytics) — `npm i @vercel/analytics` puis ajouter `<Analytics />` dans `layout.tsx`.

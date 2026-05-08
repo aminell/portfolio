@@ -63,9 +63,12 @@ export function Header() {
       <div className="mx-auto flex w-full max-w-[1400px] items-center justify-between gap-4 px-5 py-4 sm:px-8">
         <a href={homeHref} className="flex items-center gap-3 font-bold" aria-label="Aller à l'accueil">
           <span className="brut-border grid h-10 w-10 place-items-center bg-accent font-bold text-accent-ink">
-            AL
+            RT
           </span>
-          <span className="display-text text-xl tracking-tight">{content.site.name}</span>
+          <span className="leading-none">
+            <span className="display-text block text-xl tracking-tight">{content.site.name}</span>
+            <span className="mono block text-[10px] uppercase tracking-widest text-ink-soft">Réseaux & Télécoms</span>
+          </span>
         </a>
 
         <nav aria-label="Navigation principale" className="hidden md:block">

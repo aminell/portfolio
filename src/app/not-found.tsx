@@ -4,9 +4,9 @@ export default function NotFound() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center gap-8 px-6 text-center">
       <p className="mono text-sm uppercase tracking-widest text-ink-soft">Erreur 404</p>
-      <h1 className="display-text text-9xl">Page introuvable.</h1>
+      <h1 className="display-text text-9xl">Signal perdu.</h1>
       <p className="max-w-lg text-lg text-ink-soft">
-        Cette page n&apos;existe pas (ou plus). Retour à l&apos;accueil pour reprendre la visite.
+        Cette route ne répond pas. Retour à l&apos;accueil pour reprendre la liaison.
       </p>
       <Link
         href="/"

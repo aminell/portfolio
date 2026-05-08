@@ -6,6 +6,7 @@ import { SectionHeading } from "./SectionHeading";
 // Mapping niveau → progression visuelle (sur 5 blocs).
 // Tu peux changer les valeurs en éditant content.json (le label "level" est libre).
 const LEVEL_STEPS: Record<string, number> = {
+  Notions: 1,
   Apprentissage: 1,
   Bases: 2,
   "À l'aise": 3,

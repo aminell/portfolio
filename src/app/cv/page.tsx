@@ -8,7 +8,7 @@ import { content } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: `CV · ${content.site.name}`,
-  description: `Consultez et telechargez le CV d'${content.site.name}.`
+  description: `Consultez et téléchargez le CV d'${content.site.name}, profil BUT Réseaux & Télécommunications.`
 };
 
 export default function CvPage() {
@@ -23,7 +23,7 @@ export default function CvPage() {
           <Reveal className="grid gap-8 md:grid-cols-[1fr_auto] md:items-end">
             <div>
               <p className="mono mb-5 text-xs uppercase tracking-[0.3em] text-ink-soft">
-                Curriculum vitae · Alternance 2026
+                Curriculum vitae · BUT RT · Alternance 2026
               </p>
               <h1 className="display-text max-w-4xl text-7xl uppercase sm:text-8xl md:text-9xl">
                 CV
@@ -36,8 +36,8 @@ export default function CvPage() {
                 </span>
               </h1>
               <p className="mt-6 max-w-2xl text-lg font-semibold text-ink-soft sm:text-xl">
-                Le CV est consultable directement ici, avec une version PDF disponible au
-                téléchargement.
+                Le CV est consultable directement ici, avec une version PDF disponible au téléchargement.
+                Objectif : alternance en réseaux, télécoms, systèmes ou support infrastructure.
               </p>
               <div className="mt-5 flex flex-wrap items-center gap-2 mono text-[10px] uppercase tracking-widest text-ink-soft">
                 <span className="brut-border bg-paper-alt px-2 py-1">
