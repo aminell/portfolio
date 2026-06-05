@@ -1,228 +1,73 @@
-# Portfolio — Amine Larbi
+# React + TypeScript + Vite
 
-Portfolio one-page orienté **BUT Réseaux & Télécommunications**, construit avec **Next.js 14 (App Router)**, **TypeScript** et **Tailwind CSS**. Le contenu (compétences, labs, parcours, contact) est piloté par un seul fichier JSON, pour pouvoir le faire évoluer sans toucher au code.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-- **Stack** : Next.js 14 · React 18 · TypeScript · Tailwind 3
-- **Hébergement** : Vercel (déploiement auto via GitHub)
-- **Domaine** : [aminelarbi.com](https://aminelarbi.com)
-- **Direction artistique** : console réseau / supervision — accent signal **`#00E5A8`** en light mode
-- **Modes** : light + dark (switch en haut à droite, persistant)
+Currently, two official plugins are available:
 
----
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## 1. Lancer le projet en local
+## React Compiler
 
-Pré-requis : **Node.js 18.17+** (ou 20+ recommandé), **npm** (ou pnpm / yarn).
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-```bash
-# 1. Installer les dépendances
-npm install
+## Expanding the ESLint configuration
 
-# 2. Lancer le serveur de développement
-npm run dev
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
+
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 ```
 
-Le site est ensuite accessible sur **http://localhost:3000**.
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-Autres scripts utiles :
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
 
-```bash
-npm run build      # build de production (.next/)
-npm run start      # démarre le build de production
-npm run lint       # vérifie le code avec ESLint
-npm run typecheck  # vérifie les types TypeScript sans compiler
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 ```
-
----
-
-## 2. Modifier le contenu — `content.json`
-
-**Tout le texte du site vit dans [`content.json`](./content.json) à la racine.**
-Tu n'as **jamais** besoin de toucher au code des composants pour modifier le contenu.
-
-Le fichier est typé : son schéma est décrit dans [`src/types/content.ts`](./src/types/content.ts). Si tu utilises VS Code, tu auras de l'autocomplétion sur les clés.
-
-### Structure générale
-
-```jsonc
-{
-  "site":     { /* métadonnées globales (title, description, url) */ },
-  "nav":      [ /* liens de navigation : id + label + index */ ],
-  "hero":     { /* hero : nom, accroche, intro, CTAs, métriques */ },
-  "about":    { /* à propos : paragraphes, posture terrain, sujets de lab */ },
-  "skills":   { /* compétences : catégories + items */ },
-  "projects": { /* projets : items (peut être vide → empty state s'affiche) */ },
-  "timeline": { /* parcours : items avec année / titre / statut */ },
-  "contact":  { /* contact : channels (email, github, linkedin, …) */ },
-  "footer":   { /* pied de page : tagline */ }
-}
-```
-
-### Cas d'usage fréquents
-
-#### → Ajouter une compétence
-
-```jsonc
-// content.json → skills.items
-{
-  "name": "JavaScript",
-  "level": "À l'aise",          // libre, mais "Apprentissage" / "À l'aise" / "Confirmé" / "Avancé" sont mappés à une jauge visuelle
-  "category": "Réseaux",        // doit correspondre à une entrée de skills.categories
-  "note": "Pratique régulière sur des projets perso." // optionnel
-}
-```
-
-> Ajouter une **nouvelle catégorie** : ajoute son nom dans `skills.categories` (le tableau ordonné des sections affichées), puis utilise ce nom comme `category` dans tes items.
-
-#### → Ajouter un projet
-
-```jsonc
-// content.json → projects.items
-{
-  "title": "Mon premier projet",
-  "description": "Un site fait pour apprendre X et Y. C'était l'occasion de tester Z.",
-  "technologies": ["Next.js", "Tailwind", "Prisma"],
-  "github": "https://github.com/aminell/mon-projet",   // optionnel
-  "demo": "https://mon-projet.vercel.app",             // optionnel
-  "year": "2026"                                       // optionnel
-}
-```
-
-> Tant que `projects.items` est vide (`[]`), le site affiche automatiquement un **empty state** « Projets à venir ». Ajoute ton premier projet et il prendra la place du placeholder.
-
-#### → Ajouter une étape dans le parcours
-
-```jsonc
-// content.json → timeline.items
-{
-  "year": "2027",
-  "title": "Stage / mission",
-  "description": "Description courte.",
-  "status": "current"   // "done" | "current" | "upcoming" | "goal"
-}
-```
-
-#### → Ajouter / changer un canal de contact
-
-```jsonc
-// content.json → contact.channels
-{
-  "label": "Twitter",
-  "value": "@aminell",
-  "href": "https://twitter.com/aminell"
-  // "primary": true  ← un seul canal devrait être primary (style accent)
-}
-```
-
-#### → Mettre à jour le CV téléchargeable
-
-Dépose ton CV à jour dans `public/cv.pdf`. C'est ce fichier que cible le bouton **« Télécharger le CV »** du hero.
-
----
-
-## 3. Personnaliser le design
-
-L'identité visuelle vit dans deux endroits seulement :
-
-- **`src/app/globals.css`** — variables CSS (couleurs `--paper`, `--ink`, `--accent`, etc. + variantes light / dark) et motif réseau
-- **`tailwind.config.ts`** — extensions Tailwind (ombres `shadow-brut*`, polices, animations)
-
-Pour changer la couleur d'accent, modifie `--accent` dans `globals.css` (light **et** dark). Le mode sombre utilise volontairement un accent différent pour garder un contraste franc.
-
----
-
-## 4. Déployer sur Vercel
-
-### Première mise en ligne
-
-1. Crée un repo GitHub et pousse le projet :
-   ```bash
-   git init && git add . && git commit -m "init: portfolio v2"
-   git branch -M main
-   git remote add origin https://github.com/aminell/portfolio.git
-   git push -u origin main
-   ```
-2. Va sur [vercel.com/new](https://vercel.com/new) → importe le repo → Vercel détecte automatiquement Next.js.
-3. Clic sur **Deploy**. Le site est en ligne sur une URL `*.vercel.app`.
-
-À chaque `git push` sur `main`, Vercel redéploie automatiquement.
-
-### Brancher le domaine `aminelarbi.com`
-
-1. Dans le dashboard Vercel du projet : **Settings → Domains → Add** → entre `aminelarbi.com` (puis `www.aminelarbi.com`).
-2. Vercel te donne une cible DNS. Deux configurations possibles selon ton registrar :
-
-   - **Apex (`aminelarbi.com`)** :
-     - Type **A** · Nom `@` · Valeur `76.76.21.21`
-   - **Sous-domaine `www`** :
-     - Type **CNAME** · Nom `www` · Valeur `cname.vercel-dns.com`
-
-3. Si le domaine est actuellement utilisé pour les emails (`contact@aminelarbi.com`), **ne touche pas aux enregistrements MX** — seuls A et CNAME sont à modifier.
-4. La propagation DNS prend de quelques minutes à quelques heures. Une fois propagée, Vercel délivre automatiquement le certificat SSL.
-
-> ⚠️ Pense à pointer **un seul** des deux (apex ou www) comme principal et à laisser l'autre en redirection — Vercel le propose en un clic dans **Domains**.
-
----
-
-## 5. Arborescence
-
-```
-portfolio-v2/
-├── content.json              ← LE fichier à éditer (tout le contenu)
-├── public/
-│   ├── cv.pdf                ← à déposer toi-même
-│   └── README.md             (note sur les fichiers attendus)
-├── src/
-│   ├── app/
-│   │   ├── globals.css       ← variables design + bases Tailwind
-│   │   ├── layout.tsx        ← shell HTML, fonts, métadonnées
-│   │   ├── page.tsx          ← assemble les sections
-│   │   └── not-found.tsx     ← page 404
-│   ├── components/
-│   │   ├── Header.tsx
-│   │   ├── Hero.tsx
-│   │   ├── About.tsx
-│   │   ├── Skills.tsx
-│   │   ├── Projects.tsx
-│   │   ├── Timeline.tsx
-│   │   ├── Contact.tsx
-│   │   ├── Footer.tsx
-│   │   ├── ThemeProvider.tsx ← contexte light/dark
-│   │   ├── ThemeToggle.tsx
-│   │   ├── Marquee.tsx       ← bandeau défilant
-│   │   ├── Reveal.tsx        ← animation reveal-on-scroll
-│   │   └── SectionHeading.tsx
-│   ├── lib/
-│   │   └── content.ts        ← loader unique du contenu (à réutiliser partout)
-│   └── types/
-│       └── content.ts        ← schéma TypeScript du contenu
-├── tailwind.config.ts
-├── next.config.mjs
-├── tsconfig.json
-├── postcss.config.js
-├── vercel.json
-└── package.json
-```
-
----
-
-## 6. Performance & accessibilité
-
-Choix faits dans le projet :
-
-- **`next/font`** : Space Grotesk + Inter + JetBrains Mono auto-hébergés (zéro requête externe, FOUT évité).
-- **Anti-FOUC du thème** : un script inline en `<head>` applique la classe `dark` avant le premier rendu.
-- **Reveal-on-scroll** via `IntersectionObserver` (léger, pas de lib).
-- **`prefers-reduced-motion`** respecté : toutes les animations sont coupées si l'utilisateur le demande.
-- **Skip-link** + `:focus-visible` épais sur l'accent → navigation clavier confortable.
-- **Headers de sécurité** dans `vercel.json` (`X-Content-Type-Options`, `Referrer-Policy`, `Permissions-Policy`).
-
----
-
-## 7. Roadmap suggérée
-
-- [ ] Déposer ton vrai `cv.pdf` dans `public/`.
-- [ ] Ajouter ton premier lab réel dans `content.json` → `projects.items`.
-- [ ] Compléter l'établissement du BUT RT dans `content.json` → `timeline.items[1].description` dès confirmation.
-- [ ] (Optionnel) Ajouter une vraie image OG dans `public/og-image.png` + référence dans `layout.tsx`.
-- [ ] (Optionnel) Brancher [Vercel Analytics](https://vercel.com/analytics) — `npm i @vercel/analytics` puis ajouter `<Analytics />` dans `layout.tsx`.

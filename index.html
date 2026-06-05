@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="index, follow" />
+    <meta
+      name="description"
+      content="Portfolio BTS CIEL option A Informatique et Réseaux d'Amine Larbi : réseaux, systèmes, cybersécurité, IoT et projets techniques."
+    />
+    <title>Amine Larbi | BTS CIEL option A</title>
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem("theme");
+          var prefersDark =
+            window.matchMedia &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches;
+          var theme =
+            stored === "light" || stored === "dark"
+              ? stored
+              : prefersDark
+              ? "dark"
+              : "light";
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch (e) {
+          document.documentElement.setAttribute("data-theme", "light");
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

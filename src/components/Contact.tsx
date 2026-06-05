@@ -1,60 +1,62 @@
-import { content } from "@/lib/content";
-import { Reveal } from "./Reveal";
-import { SectionHeading } from "./SectionHeading";
+import { BriefcaseBusiness, Code, Mail } from 'lucide-react';
 
-export function Contact() {
-  const { contact } = content;
-  const navItem = content.nav.find((n) => n.id === "contact");
+export default function Contact() {
+  const contactLinks = [
+    {
+      label: 'Email',
+      value: 'contact@aminelarbi.com',
+      url: 'mailto:contact@aminelarbi.com',
+      Icon: Mail,
+    },
+    {
+      label: 'GitHub',
+      value: 'github.com/aminell',
+      url: 'https://github.com/aminell',
+      Icon: Code,
+    },
+    {
+      label: 'LinkedIn',
+      value: 'Amine Larbi',
+      url: 'https://www.linkedin.com/in/amine-larbi-7a6b80328',
+      Icon: BriefcaseBusiness,
+    },
+  ];
 
   return (
-    <section id="contact" className="border-b-2 border-ink py-24 sm:py-32">
-      <div className="mx-auto w-full max-w-[1400px] px-5 sm:px-8">
-        <SectionHeading index={navItem?.index ?? "06"} kicker={contact.kicker} title={contact.title} />
+    <section id="contact" className="section contact-section">
+      <div className="section-heading">
+        <p className="eyebrow">Contact</p>
+        <h2>Disponible pour échanger sur un stage ou une alternance.</h2>
+      </div>
 
-        <div className="grid gap-10 md:grid-cols-12">
-          <Reveal className="md:col-span-5">
-            <p className="text-xl text-ink-soft sm:text-2xl">{contact.intro}</p>
-            <div className="mt-8 brut-border bg-paper-alt p-6 shadow-brut-sm">
-              <p className="mono text-xs uppercase tracking-widest text-ink-soft">Réponse</p>
-              <p className="mt-2 text-2xl font-bold">Sous 48h ouvrées.</p>
-              <p className="mt-1 text-sm text-ink-soft">Du lundi au vendredi, basé en Île-de-France.</p>
+      <div className="contact-intro">
+        <p>
+          Je recherche des opportunités en support informatique, systèmes,
+          réseaux, exploitation ou cybersécurité débutante, avec un cadre où je
+          peux apprendre vite et documenter sérieusement ce que je fais.
+        </p>
+      </div>
+
+      <div className="contact-grid">
+        {contactLinks.map((link) => {
+          const Icon = link.Icon;
+
+          return (
+          <a
+            className="contact-card"
+            href={link.url}
+            target={link.url.startsWith('mailto:') ? undefined : '_blank'}
+            rel="noreferrer"
+            key={link.label}
+          >
+            <div className="contact-card-head">
+              <Icon size={22} className="contact-icon" />
+              <span>{link.label}</span>
             </div>
-          </Reveal>
-
-          <ul className="space-y-4 md:col-span-7">
-            {contact.channels.map((channel, idx) => (
-              <Reveal as="li" key={channel.label} delay={idx * 80}>
-                <a
-                  href={channel.href}
-                  target={channel.href.startsWith("http") ? "_blank" : undefined}
-                  rel={channel.href.startsWith("http") ? "noreferrer" : undefined}
-                  className={`brut-border brut-press group flex items-center justify-between gap-4 p-6 shadow-brut sm:p-8 ${
-                    channel.primary ? "bg-accent text-accent-ink" : "bg-paper-alt"
-                  }`}
-                >
-                  <div className="min-w-0 flex-1">
-                    <p
-                      className={`mono text-xs uppercase tracking-widest ${
-                        channel.primary ? "text-accent-ink/70" : "text-ink-soft"
-                      }`}
-                    >
-                      {channel.label}
-                    </p>
-                    <p className="display-text mt-1 truncate text-2xl uppercase sm:text-3xl">
-                      {channel.value}
-                    </p>
-                  </div>
-                  <span
-                    aria-hidden="true"
-                    className="brut-border grid h-12 w-12 shrink-0 place-items-center bg-paper text-2xl text-ink transition-transform group-hover:rotate-45"
-                  >
-                    ↗
-                  </span>
-                </a>
-              </Reveal>
-            ))}
-          </ul>
-        </div>
+            <strong>{link.value}</strong>
+          </a>
+          );
+        })}
       </div>
     </section>
   );
