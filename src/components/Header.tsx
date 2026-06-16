@@ -11,7 +11,7 @@ export default function Header({ activeSection, theme, toggleTheme }: HeaderProp
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const menuItems = [
-    { id: 'a-propos', label: 'Formation' },
+    { id: 'a-propos', label: 'À propos' },
     { id: 'competences', label: 'Compétences' },
     { id: 'projets', label: 'Labs' },
     { id: 'trajectoire', label: 'Parcours' },
@@ -27,10 +27,10 @@ export default function Header({ activeSection, theme, toggleTheme }: HeaderProp
       <a className="skip-link" href="#contenu">Aller au contenu</a>
       <nav className="nav" aria-label="Navigation principale">
         <a className="brand" href="#accueil" aria-label="Retour à l'accueil">
-          <span className="brand-mark">CIEL</span>
+          <span className="brand-mark">AL</span>
           <span className="brand-copy">
             <span className="brand-text">Amine Larbi</span>
-            <span className="brand-subtitle">Option A · IR</span>
+            <span className="brand-subtitle">BTS CIEL IR · Cyber</span>
           </span>
         </a>
 

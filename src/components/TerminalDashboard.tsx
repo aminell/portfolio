@@ -1,72 +1,87 @@
 import { useState } from 'react';
-import { Code, Cpu, Server, ShieldCheck, Wifi } from 'lucide-react';
+import { Cpu, GitBranch, Network, Server, ShieldHalf, SquareTerminal } from 'lucide-react';
+import { useTypewriter } from '../hooks/useTypewriter';
 
-type FocusKey = 'infra' | 'services' | 'security' | 'data';
+type FocusKey = 'net' | 'pentest' | 'devsecops' | 'dev';
 
 const focusCards: Record<FocusKey, { label: string; title: string; detail: string; points: string[] }> = {
-  infra: {
-    label: 'Infrastructure',
-    title: 'Routeur, switch, postes et segmentation',
-    detail: 'Lire une topologie, isoler les flux utiles et documenter une configuration réseau.',
-    points: ['Plan IP', 'VLAN', 'Diagnostic'],
+  net: {
+    label: 'Réseaux',
+    title: 'OSI, TCP/IP et TLS',
+    detail: 'Lire une topologie, comprendre les couches, isoler les flux et sécuriser les échanges.',
+    points: ['OSI', 'TCP/IP', 'TLS'],
   },
-  services: {
-    label: 'Services',
-    title: 'Linux, Docker et applications internes',
-    detail: 'Installer un service, le tester localement, puis comprendre son exposition sur le réseau.',
-    points: ['Ubuntu', 'Docker', 'Logs'],
+  pentest: {
+    label: 'Pentesting',
+    title: 'Reconnaissance et exploitation',
+    detail: 'Labs offensifs isolés sous Kali Linux : reconnaissance, scanning et rooms TryHackMe.',
+    points: ['Kali Linux', 'Recon', 'TryHackMe'],
   },
-  security: {
-    label: 'Sécurité',
-    title: 'Durcissement et réflexes cyber',
-    detail: 'Appliquer les bases : comptes, mises à jour, pare-feu, sauvegardes et moindre privilège.',
-    points: ['Firewall', 'MFA', 'Sauvegardes'],
+  devsecops: {
+    label: 'DevSecOps',
+    title: 'Sécurité dans la chaîne',
+    detail: 'Intégrer la sécurité au pipeline : conteneurs, versioning et durcissement par défaut.',
+    points: ['Docker', 'Git', 'Hardening'],
   },
-  data: {
-    label: 'Données',
-    title: 'Mesures, supervision et exploitation',
-    detail: 'Transformer des mesures ou journaux en informations exploitables pour agir plus vite.',
-    points: ['Capteurs', 'Dashboard', 'Alertes'],
+  dev: {
+    label: 'Dev',
+    title: 'Outils et automatisation',
+    detail: 'Construire des interfaces et automatiser les tâches répétitives avec du code propre.',
+    points: ['Next.js', 'Python', 'Scripts'],
   },
 };
 
 const nodes: Array<{ key: FocusKey; label: string; className: string; Icon: typeof Server }> = [
-  { key: 'infra', label: 'LAN', className: 'node-a', Icon: Wifi },
-  { key: 'services', label: 'SRV', className: 'node-b', Icon: Server },
-  { key: 'security', label: 'SEC', className: 'node-c', Icon: ShieldCheck },
-  { key: 'data', label: 'DATA', className: 'node-d', Icon: Code },
+  { key: 'net', label: 'NET', className: 'node-a', Icon: Network },
+  { key: 'pentest', label: 'PWN', className: 'node-b', Icon: ShieldHalf },
+  { key: 'devsecops', label: 'CI/CD', className: 'node-c', Icon: GitBranch },
+  { key: 'dev', label: 'DEV', className: 'node-d', Icon: SquareTerminal },
+];
+
+const commands = [
+  'nmap -sV 10.0.0.0/24',
+  'docker compose up -d --build',
+  'ssh kali@lab --hardening',
+  'git push origin main',
 ];
 
 export default function TerminalDashboard() {
-  const [activeFocus, setActiveFocus] = useState<FocusKey>('infra');
+  const [activeFocus, setActiveFocus] = useState<FocusKey>('net');
   const active = focusCards[activeFocus];
+  const typed = useTypewriter(commands);
 
   return (
-    <aside className="status-card" aria-label="Topologie des compétences BTS CIEL option A">
+    <aside className="status-card" aria-label="Carte interactive des axes techniques">
       <div className="terminal-header">
         <div className="mac-dots" aria-hidden="true">
           <span className="dot dot-close"></span>
           <span className="dot dot-minimize"></span>
           <span className="dot dot-maximize"></span>
         </div>
-        <strong className="terminal-title">CIEL-IR lab map</strong>
+        <strong className="terminal-title">amine@ciel-ir: ~/labs</strong>
         <div className="terminal-status-indicator">
           <span className="live-dot" aria-hidden="true"></span>
           <span>Actif</span>
         </div>
       </div>
 
+      <div className="terminal-cmd" aria-hidden="true">
+        <span className="terminal-prompt">$</span>
+        <span className="terminal-typed">{typed}</span>
+        <span className="terminal-caret" />
+      </div>
+
       <div className="topology" aria-label="Carte interactive des axes techniques">
         <svg className="topology-links" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-          <line x1="50" y1="50" x2="20" y2="24" className={activeFocus === 'infra' ? 'active' : ''} />
-          <line x1="50" y1="50" x2="80" y2="24" className={activeFocus === 'services' ? 'active' : ''} />
-          <line x1="50" y1="50" x2="22" y2="78" className={activeFocus === 'security' ? 'active' : ''} />
-          <line x1="50" y1="50" x2="78" y2="78" className={activeFocus === 'data' ? 'active' : ''} />
+          <line x1="50" y1="50" x2="20" y2="24" className={activeFocus === 'net' ? 'active' : ''} />
+          <line x1="50" y1="50" x2="80" y2="24" className={activeFocus === 'pentest' ? 'active' : ''} />
+          <line x1="50" y1="50" x2="22" y2="78" className={activeFocus === 'devsecops' ? 'active' : ''} />
+          <line x1="50" y1="50" x2="78" y2="78" className={activeFocus === 'dev' ? 'active' : ''} />
         </svg>
 
         <div className="node node-main">
           <Cpu size={18} />
-          <span>CIEL</span>
+          <span>AL</span>
         </div>
 
         {nodes.map(({ key, label, className, Icon }) => (
@@ -97,15 +112,15 @@ export default function TerminalDashboard() {
       <dl className="status-list">
         <div>
           <dt>Formation</dt>
-          <dd>BTS CIEL option A</dd>
+          <dd>BTS CIEL IR</dd>
         </div>
         <div>
-          <dt>Spécialité</dt>
-          <dd>Informatique et réseaux</dd>
+          <dt>Direction</dt>
+          <dd>Pentesting · DevSecOps</dd>
         </div>
         <div>
-          <dt>Recherche</dt>
-          <dd>Stage / alternance technique</dd>
+          <dt>Localisation</dt>
+          <dd>Vitry-sur-Seine</dd>
         </div>
       </dl>
     </aside>

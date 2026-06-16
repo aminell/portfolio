@@ -1037,8 +1037,9 @@ button.node:focus-visible {
 
 .contact-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
+  max-width: 720px;
 }
 
 .contact-card {
@@ -1303,6 +1304,452 @@ button.node:focus-visible {
   }
 }
 
+/* =====================================================================
+   Couche animations & finitions
+   ===================================================================== */
+
+/* --- Révélation au scroll --- */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: var(--reveal-delay, 0s);
+  will-change: opacity, transform;
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* La timeline reste visible : seul son rail s'anime via .is-visible */
+.timeline[data-reveal] {
+  opacity: 1;
+  transform: none;
+}
+
+/* --- Fond animé : aurores + halo curseur --- */
+.aurora {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.aurora-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.28;
+  animation: orb-float 24s ease-in-out infinite;
+}
+
+[data-theme="dark"] .aurora-orb {
+  mix-blend-mode: screen;
+  opacity: 0.42;
+}
+
+.aurora-orb-1 {
+  width: 44vw;
+  height: 44vw;
+  top: -8vw;
+  left: -8vw;
+  background: radial-gradient(circle, var(--accent), transparent 66%);
+}
+
+.aurora-orb-2 {
+  width: 38vw;
+  height: 38vw;
+  top: 6vw;
+  right: -8vw;
+  background: radial-gradient(circle, var(--violet), transparent 66%);
+  animation-delay: -8s;
+}
+
+.aurora-orb-3 {
+  width: 40vw;
+  height: 40vw;
+  bottom: -18vw;
+  left: 26vw;
+  background: radial-gradient(circle, var(--signal), transparent 66%);
+  opacity: 0.2;
+  animation-delay: -15s;
+}
+
+.aurora-pointer {
+  position: absolute;
+  width: 32vw;
+  height: 32vw;
+  top: var(--pointer-y, 28%);
+  left: var(--pointer-x, 50%);
+  background: radial-gradient(circle, color-mix(in srgb, var(--accent) 22%, transparent), transparent 60%);
+  filter: blur(46px);
+  opacity: 0.45;
+  transform: translate(-50%, -50%);
+  transition: top 0.35s ease, left 0.35s ease;
+}
+
+@keyframes orb-float {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(4vw, 3vw) scale(1.08);
+  }
+  66% {
+    transform: translate(-3vw, 2vw) scale(0.95);
+  }
+}
+
+/* --- Eyebrow avec point qui pulse --- */
+.eyebrow,
+.mission-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.eyebrow-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--signal);
+  animation: ping 2.4s ease-out infinite;
+}
+
+@keyframes ping {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--signal) 55%, transparent);
+  }
+  70%, 100% {
+    box-shadow: 0 0 0 9px transparent;
+  }
+}
+
+/* --- Nom en dégradé animé --- */
+.hero-name {
+  background-image: linear-gradient(100deg, var(--accent-strong), var(--violet), var(--signal), var(--accent-strong));
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: name-shimmer 9s ease-in-out infinite;
+}
+
+@keyframes name-shimmer {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* --- Texte surligné --- */
+.hl {
+  color: var(--accent-strong);
+  font-weight: 900;
+}
+
+.hl-alt {
+  color: var(--signal);
+}
+
+/* --- Métriques hero --- */
+.hero-metrics strong {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.hero-metrics li {
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hero-metrics li:hover {
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--line));
+  box-shadow: var(--shadow-soft);
+  transform: translateY(-3px);
+}
+
+/* --- Bouton fantôme + brillance --- */
+.button-ghost {
+  color: var(--ink);
+  background: transparent;
+}
+
+.button-ghost:hover {
+  color: var(--accent-strong);
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+}
+
+.button-primary {
+  position: relative;
+  overflow: hidden;
+}
+
+.button-primary::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: linear-gradient(120deg, transparent 32%, rgba(255, 255, 255, 0.28) 50%, transparent 68%);
+  transform: translateX(-130%);
+  transition: transform 0.7s ease;
+}
+
+.button-primary:hover::after {
+  transform: translateX(130%);
+}
+
+/* --- Ligne de commande animée du terminal --- */
+.terminal-cmd {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.4rem;
+  padding: 0.55rem 0.9rem;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+  background: color-mix(in srgb, var(--accent) 4%, var(--panel-solid));
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  white-space: nowrap;
+}
+
+.terminal-prompt {
+  color: var(--lime);
+  font-weight: 900;
+}
+
+.terminal-typed {
+  color: var(--accent-strong);
+  font-weight: 700;
+}
+
+.terminal-caret {
+  width: 0.52rem;
+  height: 1.05em;
+  flex: 0 0 auto;
+  background: var(--signal);
+  animation: caret-blink 1s steps(1) infinite;
+}
+
+@keyframes caret-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* --- Noeud central + indicateur live qui pulsent --- */
+.node-main {
+  animation: node-glow 3.2s ease-in-out infinite;
+}
+
+@keyframes node-glow {
+  0%, 100% {
+    box-shadow: var(--shadow-soft), 0 0 0 0 color-mix(in srgb, var(--accent) 45%, transparent);
+  }
+  50% {
+    box-shadow: var(--shadow-soft), 0 0 20px 2px color-mix(in srgb, var(--accent) 50%, transparent);
+  }
+}
+
+.live-dot {
+  animation: live-ping 1.9s ease-out infinite;
+}
+
+@keyframes live-ping {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--lime) 50%, transparent);
+  }
+  70%, 100% {
+    box-shadow: 0 0 0 8px transparent;
+  }
+}
+
+/* --- Icône des cartes compétences --- */
+.skill-icon {
+  display: inline-grid;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-bottom: 0.7rem;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent);
+  border-radius: var(--radius);
+  color: var(--accent-strong);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease;
+}
+
+.skill-card:hover .skill-icon {
+  color: #fff;
+  background: var(--accent);
+  transform: translateY(-3px) rotate(-6deg);
+}
+
+/* --- Barre de compétence : remplissage à l'apparition --- */
+.skill-meter span {
+  width: 0;
+  transition: width 1.1s cubic-bezier(0.2, 0.7, 0.2, 1) 0.25s;
+}
+
+.skill-card.is-visible .skill-meter span {
+  width: var(--skill-level);
+}
+
+/* --- Brillance qui balaie les cartes --- */
+.skill-card::after,
+.project-card::after {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  content: "";
+  background: linear-gradient(115deg, transparent 38%, color-mix(in srgb, var(--accent) 18%, transparent) 50%, transparent 62%);
+  transform: translateX(-130%);
+  transition: transform 0.85s ease;
+  pointer-events: none;
+}
+
+.skill-card:hover::after,
+.project-card:hover::after {
+  transform: translateX(130%);
+}
+
+/* --- Stack & lien des projets --- */
+.project-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  padding: 0;
+  margin: 0.85rem 0 0;
+  list-style: none;
+}
+
+.project-stack li {
+  padding: 0.26rem 0.5rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--ink-soft);
+  background: color-mix(in srgb, var(--accent) 6%, transparent);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.project-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: auto;
+  padding-top: 1rem;
+  color: var(--accent-strong);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.project-cta svg {
+  transition: transform 0.2s ease;
+}
+
+.project-card:hover .project-cta svg {
+  transform: translate(2px, -2px);
+}
+
+/* --- Soulignement du titre de section qui se dessine --- */
+.section-heading::after {
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) 0.2s;
+}
+
+.section-heading.is-visible::after {
+  transform: scaleX(1);
+}
+
+/* --- Timeline verticale avec rail dessiné --- */
+.timeline {
+  position: relative;
+  gap: 0.85rem;
+  padding: 0.2rem 0 0.2rem 2rem;
+}
+
+.timeline::before {
+  position: absolute;
+  top: 1.2rem;
+  bottom: 1.6rem;
+  left: 0.55rem;
+  width: 2px;
+  content: "";
+  border-radius: 2px;
+  background: linear-gradient(180deg, var(--accent), var(--violet), var(--signal));
+  transform: scaleY(0);
+  transform-origin: top center;
+  transition: transform 1.2s cubic-bezier(0.2, 0.7, 0.2, 1) 0.15s;
+}
+
+.timeline.is-visible::before {
+  transform: scaleY(1);
+}
+
+.timeline li {
+  position: relative;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.timeline li:hover {
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--line));
+  box-shadow: var(--shadow-soft);
+  transform: translateX(4px);
+}
+
+.timeline-marker {
+  position: absolute;
+  top: 1.35rem;
+  left: -1.81rem;
+  width: 0.92rem;
+  height: 0.92rem;
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  background: var(--panel-solid);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 13%, transparent);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.timeline li:hover .timeline-marker {
+  border-color: var(--signal);
+  box-shadow: 0 0 0 6px color-mix(in srgb, var(--signal) 16%, transparent);
+  transform: scale(1.18);
+}
+
+/* --- Contact : finition --- */
+.contact-card-head .contact-icon {
+  transition: transform 0.25s ease;
+}
+
+.contact-card:hover .contact-card-head .contact-icon {
+  transform: scale(1.12) rotate(-4deg);
+}
+
+@media (max-width: 760px) {
+  .timeline {
+    padding-left: 1.7rem;
+  }
+
+  .timeline::before {
+    left: 0.45rem;
+  }
+
+  .timeline-marker {
+    top: 1.1rem;
+    left: -1.55rem;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -1311,5 +1758,18 @@ button.node:focus-visible {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  .skill-meter span {
+    width: var(--skill-level);
+  }
+
+  .section-heading::after,
+  .timeline::before {
+    transform: none;
+  }
+
+  .hero-name {
+    animation: none;
   }
 }

@@ -1,100 +1,94 @@
-import { BrainCircuit, CircuitBoard, ExternalLink, GraduationCap, Server, ShieldCheck, SplitSquareHorizontal } from 'lucide-react';
+import type { CSSProperties } from 'react';
+import { CalendarClock, ExternalLink, LayoutTemplate, ShieldHalf } from 'lucide-react';
 
 export default function Projects() {
   const projectList = [
     {
       mission: 'Lab 01',
-      tag: 'Ubuntu · Docker',
-      title: 'Stack IA locale sur Ubuntu',
-      desc: 'Installation d\'Ollama, Docker et Open WebUI pour héberger un service local et comprendre son exposition réseau.',
-      link: 'https://github.com/aminell',
-      Icon: Server,
-      variant: 'infra',
-    },
-    {
-      mission: 'Lab 02',
-      tag: 'Système · Boot',
-      title: 'Dual-boot Ubuntu / Windows',
-      desc: 'Partitionnement multi-disques, installation propre et environnement de travail pour tester des outils réseau.',
-      link: 'https://github.com/aminell',
-      Icon: SplitSquareHorizontal,
-      variant: 'system',
-    },
-    {
-      mission: 'Lab 03',
-      tag: 'Python · Automatisation',
-      title: 'Scripts et résumé de texte',
-      desc: 'Mini-projet Python pour progresser sur la manipulation de texte, les fonctions et la logique de traitement.',
-      link: 'https://github.com/aminell',
-      Icon: BrainCircuit,
+      tag: 'Next.js · Design',
+      stack: ['Next.js', 'React', 'Neo-Brutalist'],
+      title: 'Portfolio Neo-Brutalist',
+      desc: 'Site personnel développé en Next.js avec une identité néo-brutaliste, déployé sur aminelarbi.com.',
+      link: 'https://aminelarbi.com',
+      linkLabel: 'aminelarbi.com',
+      Icon: LayoutTemplate,
       variant: 'python',
     },
     {
-      mission: 'Lab 04',
-      tag: 'IoT · ESP32',
-      title: 'Station météo connectée',
-      desc: 'ESP32, capteurs température / humidité / pression et données envoyées en Wi-Fi vers un dashboard local.',
+      mission: 'Lab 02',
+      tag: 'Cybersécurité · Offensive',
+      stack: ['Kali Linux', 'VirtualBox', 'TryHackMe'],
+      title: 'Lab cybersécurité',
+      desc: 'Environnement offensif isolé : Kali Linux sous VirtualBox pour s\'entraîner sur les rooms TryHackMe.',
       link: 'https://github.com/aminell',
-      Icon: CircuitBoard,
-      variant: 'iot',
-    },
-    {
-      mission: 'Lab 05',
-      tag: 'Sécurité · Méthode',
-      title: 'Carnet de durcissement',
-      desc: 'Checklist personnelle : mots de passe, mises à jour, sauvegardes, pare-feu et bonnes pratiques utilisateur.',
-      link: 'https://github.com/aminell',
-      Icon: ShieldCheck,
+      linkLabel: 'github.com/aminell',
+      Icon: ShieldHalf,
       variant: 'security',
     },
     {
-      mission: 'Lab 06',
-      tag: 'Formation · Python',
-      title: 'CS50P Harvard',
-      desc: 'Parcours Python en cours pour renforcer les bases de programmation utiles à l\'automatisation réseau.',
+      mission: 'Lab 03',
+      tag: 'Productivité · Méthode',
+      stack: ['Notion', 'Google Calendar'],
+      title: 'Workspace organisé',
+      desc: 'Système de suivi personnel sous Notion couplé à Google Calendar pour planifier labs, veille et révisions.',
       link: 'https://github.com/aminell',
-      Icon: GraduationCap,
-      variant: 'training',
+      linkLabel: 'github.com/aminell',
+      Icon: CalendarClock,
+      variant: 'infra',
     },
   ];
 
   return (
     <section id="projets" className="section">
-      <div className="section-heading">
-        <p className="eyebrow">Labs portfolio</p>
+      <div className="section-heading" data-reveal>
+        <p className="eyebrow"><span className="eyebrow-dot" aria-hidden="true" /> Labs portfolio</p>
         <h2>Des projets pensés comme des preuves techniques.</h2>
       </div>
 
       <div className="projects-list">
-        {projectList.map((project) => {
+        {projectList.map((project, index) => {
           const Icon = project.Icon;
 
           return (
-          <article className="project-card" key={project.title}>
-            <div className="project-media">
-              <span className="mission-label">{project.mission}</span>
-              <div className={`project-poster project-poster-${project.variant}`}>
-                <Icon size={44} />
-                <span>{project.tag}</span>
+            <article
+              className="project-card"
+              key={project.title}
+              data-reveal
+              style={{ '--reveal-delay': `${index * 110}ms` } as CSSProperties}
+            >
+              <div className="project-media">
+                <span className="mission-label">{project.mission}</span>
+                <div className={`project-poster project-poster-${project.variant}`}>
+                  <Icon size={44} />
+                  <span>{project.tag}</span>
+                </div>
               </div>
-            </div>
-            <div className="project-details">
-              <div className="project-header">
-                <span className="project-tag">{project.tag}</span>
-                <a
-                  className="project-link"
-                  href={project.link}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={`Voir le projet ${project.title} sur GitHub`}
-                >
-                  <ExternalLink size={18} />
+              <div className="project-details">
+                <div className="project-header">
+                  <span className="project-tag">{project.tag}</span>
+                  <a
+                    className="project-link"
+                    href={project.link}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`Ouvrir le projet ${project.title}`}
+                  >
+                    <ExternalLink size={18} />
+                  </a>
+                </div>
+                <h3>{project.title}</h3>
+                <p>{project.desc}</p>
+                <ul className="project-stack" aria-label="Technologies">
+                  {project.stack.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+                <a className="project-cta" href={project.link} target="_blank" rel="noreferrer">
+                  {project.linkLabel}
+                  <ExternalLink size={14} />
                 </a>
               </div>
-              <h3>{project.title}</h3>
-              <p>{project.desc}</p>
-            </div>
-          </article>
+            </article>
           );
         })}
       </div>

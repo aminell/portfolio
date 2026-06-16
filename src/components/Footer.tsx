@@ -8,7 +8,7 @@ export default function Footer() {
 
   return (
     <footer className="footer">
-      <p>Amine Larbi · BTS CIEL option A</p>
+      <p>Amine Larbi · Futur étudiant BTS CIEL IR · Cybersécurité &amp; réseaux</p>
       <button className="back-to-top" type="button" onClick={handleBackToTop}>
         Retour en haut
       </button>

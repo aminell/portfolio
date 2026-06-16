@@ -7,6 +7,7 @@ import Projects from './components/Projects';
 import Trajectory from './components/Trajectory';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import { useScrollReveal } from './hooks/useScrollReveal';
 
 export default function App() {
   const [theme, setTheme] = useState<'light' | 'dark'>(() => {
@@ -22,6 +23,8 @@ export default function App() {
 
   const [activeSection, setActiveSection] = useState('accueil');
 
+  useScrollReveal();
+
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
     try {
@@ -33,7 +36,7 @@ export default function App() {
 
   useEffect(() => {
     const sections = document.querySelectorAll('main section[id]');
-    
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -55,12 +58,34 @@ export default function App() {
     };
   }, []);
 
+  // Halo lumineux qui suit le curseur (purement décoratif).
+  useEffect(() => {
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) return;
+
+    const handlePointer = (event: PointerEvent) => {
+      const x = (event.clientX / window.innerWidth) * 100;
+      const y = (event.clientY / window.innerHeight) * 100;
+      document.documentElement.style.setProperty('--pointer-x', `${x}%`);
+      document.documentElement.style.setProperty('--pointer-y', `${y}%`);
+    };
+
+    window.addEventListener('pointermove', handlePointer);
+    return () => window.removeEventListener('pointermove', handlePointer);
+  }, []);
+
   const toggleTheme = () => {
     setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
   };
 
   return (
     <>
+      <div className="aurora" aria-hidden="true">
+        <span className="aurora-orb aurora-orb-1" />
+        <span className="aurora-orb aurora-orb-2" />
+        <span className="aurora-orb aurora-orb-3" />
+        <span className="aurora-pointer" />
+      </div>
       <Header activeSection={activeSection} theme={theme} toggleTheme={toggleTheme} />
       <main id="contenu">
         <Hero />
