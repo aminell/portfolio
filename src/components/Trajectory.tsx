@@ -1,4 +1,5 @@
 import type { CSSProperties } from 'react';
+import ScrambleText from './ScrambleText';
 
 export default function Trajectory() {
   const steps = [
@@ -29,7 +30,7 @@ export default function Trajectory() {
       <div>
         <div className="section-heading" data-reveal>
           <p className="eyebrow"><span className="eyebrow-dot" aria-hidden="true" /> Parcours</p>
-          <h2>Une trajectoire lisible vers la cybersécurité.</h2>
+          <ScrambleText text="Une trajectoire lisible vers la cybersécurité." />
         </div>
 
         <ol className="timeline" data-reveal>

@@ -1,5 +1,6 @@
 import type { CSSProperties } from 'react';
 import { Code, Mail } from 'lucide-react';
+import ScrambleText from './ScrambleText';
 
 export default function Contact() {
   const contactLinks = [
@@ -21,7 +22,7 @@ export default function Contact() {
     <section id="contact" className="section contact-section">
       <div className="section-heading" data-reveal>
         <p className="eyebrow"><span className="eyebrow-dot" aria-hidden="true" /> Contact</p>
-        <h2>Disponible pour échanger sur un stage ou une alternance.</h2>
+        <ScrambleText text="Disponible pour échanger sur un stage ou une alternance." />
       </div>
 
       <div className="contact-intro" data-reveal>

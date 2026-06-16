@@ -7,6 +7,7 @@ import Projects from './components/Projects';
 import Trajectory from './components/Trajectory';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import ParticleField from './components/ParticleField';
 import { useScrollReveal } from './hooks/useScrollReveal';
 
 export default function App() {
@@ -74,6 +75,29 @@ export default function App() {
     return () => window.removeEventListener('pointermove', handlePointer);
   }, []);
 
+  // Barre de progression de lecture liée au scroll.
+  useEffect(() => {
+    let raf = 0;
+    const update = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        const root = document.documentElement;
+        const max = root.scrollHeight - root.clientHeight;
+        const progress = max > 0 ? root.scrollTop / max : 0;
+        root.style.setProperty('--scroll-progress', String(progress));
+      });
+    };
+
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener('scroll', update);
+      window.removeEventListener('resize', update);
+    };
+  }, []);
+
   const toggleTheme = () => {
     setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
   };
@@ -85,6 +109,10 @@ export default function App() {
         <span className="aurora-orb aurora-orb-2" />
         <span className="aurora-orb aurora-orb-3" />
         <span className="aurora-pointer" />
+      </div>
+      <ParticleField />
+      <div className="scroll-progress" aria-hidden="true">
+        <span />
       </div>
       <Header activeSection={activeSection} theme={theme} toggleTheme={toggleTheme} />
       <main id="contenu">

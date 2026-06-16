@@ -1,5 +1,7 @@
-import type { CSSProperties } from 'react';
 import { Boxes, Container, GitBranch, ShieldHalf, SquareTerminal, TerminalSquare, Network } from 'lucide-react';
+import type { CSSProperties } from 'react';
+import ScrambleText from './ScrambleText';
+import TiltCard from './TiltCard';
 
 export default function Skills() {
   const skillList = [
@@ -17,19 +19,14 @@ export default function Skills() {
       <div>
         <div className="section-heading" data-reveal>
           <p className="eyebrow"><span className="eyebrow-dot" aria-hidden="true" /> Compétences</p>
-          <h2>Une stack alignée cybersécurité, réseaux &amp; dev.</h2>
+          <ScrambleText text="Une stack alignée cybersécurité, réseaux & dev." />
         </div>
 
         <div className="skills-grid">
           {skillList.map((skill, index) => {
             const Icon = skill.Icon;
             return (
-              <article
-                className="skill-card"
-                key={skill.name}
-                data-reveal
-                style={{ '--reveal-delay': `${index * 70}ms` } as CSSProperties}
-              >
+              <TiltCard className="skill-card" key={skill.name} delay={index * 70}>
                 <span className="skill-index">{String(index + 1).padStart(2, '0')}</span>
                 <span className="skill-icon" aria-hidden="true"><Icon size={20} /></span>
                 <h3>{skill.name}</h3>
@@ -42,7 +39,7 @@ export default function Skills() {
                 >
                   <span></span>
                 </div>
-              </article>
+              </TiltCard>
             );
           })}
         </div>

@@ -1,5 +1,6 @@
-import type { CSSProperties } from 'react';
 import { CalendarClock, ExternalLink, LayoutTemplate, ShieldHalf } from 'lucide-react';
+import ScrambleText from './ScrambleText';
+import TiltCard from './TiltCard';
 
 export default function Projects() {
   const projectList = [
@@ -42,7 +43,7 @@ export default function Projects() {
     <section id="projets" className="section">
       <div className="section-heading" data-reveal>
         <p className="eyebrow"><span className="eyebrow-dot" aria-hidden="true" /> Labs portfolio</p>
-        <h2>Des projets pensés comme des preuves techniques.</h2>
+        <ScrambleText text="Des projets pensés comme des preuves techniques." />
       </div>
 
       <div className="projects-list">
@@ -50,12 +51,7 @@ export default function Projects() {
           const Icon = project.Icon;
 
           return (
-            <article
-              className="project-card"
-              key={project.title}
-              data-reveal
-              style={{ '--reveal-delay': `${index * 110}ms` } as CSSProperties}
-            >
+            <TiltCard className="project-card" key={project.title} delay={index * 110}>
               <div className="project-media">
                 <span className="mission-label">{project.mission}</span>
                 <div className={`project-poster project-poster-${project.variant}`}>
@@ -88,7 +84,7 @@ export default function Projects() {
                   <ExternalLink size={14} />
                 </a>
               </div>
-            </article>
+            </TiltCard>
           );
         })}
       </div>

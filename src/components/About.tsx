@@ -1,4 +1,19 @@
 import type { CSSProperties } from 'react';
+import ScrambleText from './ScrambleText';
+import { useCountUp } from '../hooks/useCountUp';
+
+function Stat({ value, suffix, label, delay }: { value: number; suffix?: string; label: string; delay: number }) {
+  const [ref, current] = useCountUp<HTMLDivElement>(value);
+  return (
+    <div className="stat" ref={ref} data-reveal style={{ '--reveal-delay': `${delay}ms` } as CSSProperties}>
+      <strong>
+        {current}
+        {suffix}
+      </strong>
+      <span>{label}</span>
+    </div>
+  );
+}
 
 export default function About() {
   const pillars = [
@@ -12,11 +27,11 @@ export default function About() {
     <section id="a-propos" className="section">
       <div className="section-heading" data-reveal>
         <p className="eyebrow"><span className="eyebrow-dot" aria-hidden="true" /> À propos</p>
-        <h2>Du bac STI2D SIN vers le pentesting &amp; le DevSecOps.</h2>
+        <ScrambleText text="Du bac STI2D SIN vers le pentesting & le DevSecOps." />
       </div>
 
       <div className="two-columns">
-        <div className="text-block" data-reveal>
+        <div className="text-block" data-reveal="left">
           <p>
             Basé à <strong>Vitry-sur-Seine</strong>, titulaire d'un <strong>bac STI2D SIN 2025</strong>,
             je me dirige vers le <strong>pentesting</strong> et le <strong>DevSecOps</strong>. Après une
@@ -30,7 +45,7 @@ export default function About() {
           </p>
         </div>
 
-        <div className="note-card" data-reveal style={{ '--reveal-delay': '120ms' } as CSSProperties}>
+        <div className="note-card" data-reveal="right">
           <span className="card-kicker">Ce que je vise</span>
           <h3>Un profil offensif &amp; rigoureux</h3>
           <ul className="mission-list">
@@ -41,6 +56,13 @@ export default function About() {
             ))}
           </ul>
         </div>
+      </div>
+
+      <div className="stat-strip" aria-label="Quelques chiffres">
+        <Stat value={7} label="Compétences clés" delay={0} />
+        <Stat value={3} label="Labs publiés" delay={90} />
+        <Stat value={2} label="Ans · BTS CIEL IR" delay={180} />
+        <Stat value={100} suffix="%" label="Orienté terrain" delay={270} />
       </div>
     </section>
   );
