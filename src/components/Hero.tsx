@@ -45,11 +45,11 @@ export default function Hero() {
             <Mail size={18} />
             <span>Me contacter</span>
           </a>
-          <a className="button button-secondary" href="https://github.com/aminell" target="_blank" rel="noreferrer">
+          <a className="button button-secondary liquid-glass" href="https://github.com/aminell" target="_blank" rel="noreferrer">
             <Code size={18} />
             <span>GitHub</span>
           </a>
-          <a className="button button-ghost" href="#projets">
+          <a className="button button-ghost liquid-glass" href="#projets">
             <Radar size={18} />
             <span>Voir les labs</span>
           </a>
@@ -57,7 +57,7 @@ export default function Hero() {
       </div>
 
       <div className="hero-panel-stack">
-        <div className="mission-card" data-reveal style={{ '--reveal-delay': '260ms' } as CSSProperties}>
+        <div className="mission-card liquid-glass" data-reveal style={{ '--reveal-delay': '260ms' } as CSSProperties}>
           <div>
             <span className="mission-kicker"><TerminalSquare size={14} aria-hidden="true" /> Cap suivi</span>
             <strong>Devenir analyste sécurité offensive &amp; DevSecOps</strong>

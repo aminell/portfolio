@@ -23,7 +23,7 @@ export default function Header({ activeSection, theme, toggleTheme }: HeaderProp
   };
 
   return (
-    <header className="site-header">
+    <header className="site-header liquid-glass liquid-glass--bar">
       <a className="skip-link" href="#contenu">Aller au contenu</a>
       <nav className="nav" aria-label="Navigation principale">
         <a className="brand" href="#accueil" aria-label="Retour à l'accueil">
@@ -36,7 +36,7 @@ export default function Header({ activeSection, theme, toggleTheme }: HeaderProp
 
         <div className="nav-controls">
           <button
-            className="theme-toggle"
+            className="theme-toggle liquid-glass"
             type="button"
             onClick={toggleTheme}
             aria-pressed={theme === 'light'}
@@ -46,7 +46,7 @@ export default function Header({ activeSection, theme, toggleTheme }: HeaderProp
             <span className="sr-only">{theme === 'light' ? 'Mode sombre' : 'Mode clair'}</span>
           </button>
           <button
-            className="nav-toggle"
+            className="nav-toggle liquid-glass"
             type="button"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-expanded={isMenuOpen}

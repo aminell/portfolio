@@ -8,6 +8,7 @@ import Trajectory from './components/Trajectory';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ParticleField from './components/ParticleField';
+import LiquidGlassFilters from './components/LiquidGlassFilters';
 import { useScrollReveal } from './hooks/useScrollReveal';
 
 export default function App() {
@@ -104,6 +105,7 @@ export default function App() {
 
   return (
     <>
+      <LiquidGlassFilters />
       <div className="liquid-backdrop" aria-hidden="true">
         <span className="liquid-film liquid-film-1" />
         <span className="liquid-film liquid-film-2" />

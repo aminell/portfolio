@@ -2052,3 +2052,121 @@ button.node:focus-visible {
     display: none;
   }
 }
+
+/* =====================================================================
+   Liquid Glass — réfraction réaliste (style « verre liquide » Apple)
+   La signature : le verre COURBE le contenu derrière lui (lentille) au lieu
+   de simplement le flouter. La réfraction vient du filtre SVG
+   #liquid-glass (cf. LiquidGlassFilters.tsx), appliqué en backdrop-filter.
+   Les navigateurs sans support gardent le rendu givré de secours ci-dessous.
+   ===================================================================== */
+
+:root {
+  --lg-tint-hi: rgba(255, 255, 255, 0.3);
+  --lg-tint-lo: rgba(255, 255, 255, 0.08);
+  --lg-edge: rgba(255, 255, 255, 0.66);
+  --lg-edge-lo: rgba(255, 255, 255, 0.24);
+  --lg-spec: rgba(255, 255, 255, 0.95);
+  --lg-inner-shadow: rgba(15, 23, 42, 0.2);
+  --lg-drop: rgba(15, 23, 42, 0.24);
+  --lg-sheen: rgba(255, 255, 255, 0.6);
+}
+
+[data-theme="dark"] {
+  --lg-tint-hi: rgba(255, 255, 255, 0.12);
+  --lg-tint-lo: rgba(255, 255, 255, 0.02);
+  --lg-edge: rgba(255, 255, 255, 0.42);
+  --lg-edge-lo: rgba(255, 255, 255, 0.09);
+  --lg-spec: rgba(255, 255, 255, 0.72);
+  --lg-inner-shadow: rgba(0, 0, 0, 0.5);
+  --lg-drop: rgba(0, 0, 0, 0.48);
+  --lg-sheen: rgba(255, 255, 255, 0.4);
+}
+
+/* Couche de base : translucide + givrée (fallback universel). */
+.liquid-glass {
+  position: relative;
+  isolation: isolate;
+  border: 1px solid var(--lg-edge-lo);
+  background:
+    linear-gradient(135deg, var(--lg-tint-hi), var(--lg-tint-lo));
+  -webkit-backdrop-filter: blur(16px) saturate(170%);
+  backdrop-filter: blur(16px) saturate(170%);
+  box-shadow:
+    inset 0 1px 0 0 var(--lg-spec),
+    inset 0 0 0 1px var(--lg-edge-lo),
+    inset 0 -12px 26px -18px var(--lg-inner-shadow),
+    0 12px 32px -12px var(--lg-drop),
+    0 3px 10px -5px var(--lg-drop);
+}
+
+/* Reflet spéculaire : glaçage haut + halo qui peut suivre la lumière (--lg-x). */
+.liquid-glass::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  content: "";
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    radial-gradient(130% 90% at var(--lg-x, 28%) -20%, var(--lg-sheen), transparent 56%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.22), transparent 34%);
+  mix-blend-mode: screen;
+  opacity: 0.7;
+}
+
+/* Bande de réflexion fine en diagonale, comme un éclat sur du verre poli. */
+.liquid-glass::after {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  content: "";
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(104deg, transparent 38%, rgba(255, 255, 255, 0.3) 47%, transparent 56%);
+  opacity: 0.35;
+  mix-blend-mode: screen;
+}
+
+/* Barre de navigation : la surface Liquid Glass iconique. */
+.liquid-glass--bar {
+  --lg-x: var(--pointer-x, 50%);
+  border-right: 0;
+  border-bottom: 1px solid var(--lg-edge-lo);
+  border-left: 0;
+  border-top: 0;
+  border-radius: 0;
+  background:
+    linear-gradient(180deg, var(--lg-tint-hi), var(--lg-tint-lo)),
+    linear-gradient(180deg, color-mix(in srgb, var(--paper) 26%, transparent), transparent 70%);
+  box-shadow:
+    inset 0 1px 0 0 var(--lg-spec),
+    inset 0 -1px 0 0 var(--lg-edge-lo),
+    0 18px 42px -26px var(--lg-drop);
+}
+
+.liquid-glass--bar::after {
+  /* Le glaçage diagonal n'a pas de sens sur une barre pleine largeur. */
+  display: none;
+}
+
+/* Activation de la VRAIE réfraction sur les moteurs compatibles (Chromium).
+   Safari/Firefox ignorent ce bloc et conservent le givré ci-dessus. */
+@supports (backdrop-filter: url(#liquid-glass)) {
+  .liquid-glass {
+    -webkit-backdrop-filter: url(#liquid-glass) blur(2px) saturate(160%) brightness(1.04);
+    backdrop-filter: url(#liquid-glass) blur(2px) saturate(160%) brightness(1.04);
+  }
+
+  .liquid-glass--bar,
+  .liquid-glass--strong {
+    -webkit-backdrop-filter: url(#liquid-glass-strong) blur(1.5px) saturate(168%) brightness(1.05);
+    backdrop-filter: url(#liquid-glass-strong) blur(1.5px) saturate(168%) brightness(1.05);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .liquid-glass--bar {
+    --lg-x: 50%;
+  }
+}
