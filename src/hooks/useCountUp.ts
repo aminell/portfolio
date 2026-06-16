@@ -8,16 +8,15 @@ import { useEffect, useRef, useState } from 'react';
 export function useCountUp<T extends HTMLElement = HTMLDivElement>(target: number, duration = 1600) {
   const ref = useRef<T>(null);
   const started = useRef(false);
-  const [value, setValue] = useState(0);
+  const prefersReducedMotion =
+    typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const [value, setValue] = useState(() => (prefersReducedMotion ? target : 0));
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
 
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      setValue(target);
-      return;
-    }
+    if (prefersReducedMotion) return;
 
     let raf = 0;
     const observer = new IntersectionObserver(
@@ -45,7 +44,7 @@ export function useCountUp<T extends HTMLElement = HTMLDivElement>(target: numbe
       observer.disconnect();
       cancelAnimationFrame(raf);
     };
-  }, [target, duration]);
+  }, [target, duration, prefersReducedMotion]);
 
-  return [ref, value] as const;
+  return [ref, prefersReducedMotion ? target : value] as const;
 }

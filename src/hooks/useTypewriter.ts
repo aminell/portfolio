@@ -5,16 +5,14 @@ import { useEffect, useState } from 'react';
  * Respecte `prefers-reduced-motion` en affichant simplement la première phrase.
  */
 export function useTypewriter(phrases: string[], typeSpeed = 55, deleteSpeed = 28, pause = 1400) {
-  const [text, setText] = useState('');
+  const prefersReducedMotion =
+    typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const [text, setText] = useState(() => (prefersReducedMotion ? phrases[0] ?? '' : ''));
   const [index, setIndex] = useState(0);
   const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReduced) {
-      setText(phrases[0] ?? '');
-      return;
-    }
+    if (prefersReducedMotion) return;
 
     const current = phrases[index % phrases.length];
     let delay = deleting ? deleteSpeed : typeSpeed;
@@ -40,7 +38,7 @@ export function useTypewriter(phrases: string[], typeSpeed = 55, deleteSpeed = 2
     }, delay);
 
     return () => clearTimeout(timer);
-  }, [text, deleting, index, phrases, typeSpeed, deleteSpeed, pause]);
+  }, [text, deleting, index, phrases, typeSpeed, deleteSpeed, pause, prefersReducedMotion]);
 
-  return text;
+  return prefersReducedMotion ? phrases[0] ?? '' : text;
 }

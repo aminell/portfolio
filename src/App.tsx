@@ -59,7 +59,7 @@ export default function App() {
     };
   }, []);
 
-  // Halo lumineux qui suit le curseur (purement décoratif).
+  // Reflet fluide qui suit le curseur (purement décoratif).
   useEffect(() => {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReduced) return;
@@ -104,11 +104,10 @@ export default function App() {
 
   return (
     <>
-      <div className="aurora" aria-hidden="true">
-        <span className="aurora-orb aurora-orb-1" />
-        <span className="aurora-orb aurora-orb-2" />
-        <span className="aurora-orb aurora-orb-3" />
-        <span className="aurora-pointer" />
+      <div className="liquid-backdrop" aria-hidden="true">
+        <span className="liquid-film liquid-film-1" />
+        <span className="liquid-film liquid-film-2" />
+        <span className="liquid-pointer" />
       </div>
       <ParticleField />
       <div className="scroll-progress" aria-hidden="true">

@@ -18,19 +18,18 @@ interface Props {
 export default function ScrambleText({ text, className }: Props) {
   const ref = useRef<HTMLHeadingElement>(null);
   const started = useRef(false);
+  const prefersReducedMotion =
+    typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const [display, setDisplay] = useState(() => {
     if (typeof window === 'undefined') return text;
-    return window.matchMedia('(prefers-reduced-motion: reduce)').matches ? text : scrambleOf(text);
+    return prefersReducedMotion ? text : scrambleOf(text);
   });
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
 
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      setDisplay(text);
-      return;
-    }
+    if (prefersReducedMotion) return;
 
     let raf = 0;
     const run = () => {
@@ -81,11 +80,11 @@ export default function ScrambleText({ text, className }: Props) {
       observer.disconnect();
       cancelAnimationFrame(raf);
     };
-  }, [text]);
+  }, [prefersReducedMotion, text]);
 
   return (
     <h2 ref={ref} className={className} data-scramble>
-      {display}
+      {prefersReducedMotion ? text : display}
     </h2>
   );
 }
