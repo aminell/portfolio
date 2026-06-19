@@ -1,33 +1,18 @@
 <!doctype html>
 <html lang="fr">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="robots" content="index, follow" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#07090f" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta
       name="description"
-      content="Portfolio d'Amine Larbi, futur étudiant BTS CIEL IR à Vitry-sur-Seine : cybersécurité, réseaux (OSI, TCP/IP, TLS), pentesting et DevSecOps."
+      content="Pause crée un court moment de réflexion avant d'ouvrir une application."
     />
-    <title>Amine Larbi | Cybersécurité &amp; Réseaux · BTS CIEL IR</title>
-    <script>
-      (function () {
-        try {
-          var stored = localStorage.getItem("theme");
-          var prefersDark =
-            window.matchMedia &&
-            window.matchMedia("(prefers-color-scheme: dark)").matches;
-          var theme =
-            stored === "light" || stored === "dark"
-              ? stored
-              : prefersDark
-              ? "dark"
-              : "light";
-          document.documentElement.setAttribute("data-theme", theme);
-        } catch (e) {
-          document.documentElement.setAttribute("data-theme", "light");
-        }
-      })();
-    </script>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Pause</title>
   </head>
   <body>
     <div id="root"></div>
